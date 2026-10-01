@@ -2,6 +2,8 @@
 
 의료 현장 경험, 디지털 헬스케어 서비스 기획, B2B 고객 운영 역량을 보여주는 한국어 단일 페이지 포트폴리오입니다.
 
+**공개 사이트:** https://fresh1567.github.io/shin-seonhwa-portfolio/
+
 ## 구성
 
 - `index.html` — 전체 콘텐츠와 접근 가능한 문서 구조
