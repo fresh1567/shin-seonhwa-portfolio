@@ -11,7 +11,7 @@
 - `script.js` — 모바일 메뉴, 업무 방식 탭, 프로젝트 상세 패널, 모션그래픽 및 3D 제어
 - `healthcare-mobius.glb` — Blender에서 다시 열 수 있는 경량 Hero 3D 모델
 - `portfolio-hero-mobius.png` — WebGL 미지원·데이터 절약 환경용 Hero 대체 이미지
-- `assets/projects/` — 원본 포트폴리오 PPT에서 발췌한 공개용 프로젝트 화면
+- `assets/projects/` — 원본 포트폴리오·소울 서비스 소개서와 삼성화재 공식 소개에서 발췌한 프로젝트 화면
 - `shin-seonhwa-career-profile.pdf` — 생년·전화번호·주소·사진을 제외한 공개용 경력기술서
 - `404.html` — GitHub Pages용 오류 안내 페이지
 
@@ -44,6 +44,14 @@ Node.js 등의 정적 파일 서버로 이 폴더를 열어 확인합니다.
 사이트는 저장소가 공개인 경우 보통 `https://계정명.github.io/저장소명/`에서 열립니다. 실제 주소는 GitHub Pages 설정 화면에서 확인하세요.
 
 ## 콘텐츠 원칙
+
+### 2026.10.02 업데이트
+
+- DKI 청각장애인 위험 알림 APP ‘소울’: 서비스 기획·PM 경험과 2026.07.13 소개서의 워치 알림·SOS·보호자 연계 이미지를 추가했습니다. 제안 이미지는 출시 실적·성능 검증과 구분해 표시합니다.
+- 삼성화재 애니핏 프로: 경력기술서에 명시된 2022.06–2024.05 B2B 운영·운영기획과 약 3,000명 이상 대상 경험을 반영했습니다.
+- 애니핏 이미지 출처: https://www.samsungfire.co.kr/vh/page/VH.HPBN0224.do
+- 원본 이미지: https://www.samsungfire.co.kr/v2/resources/images/customer/04/any_pro_list01.png
+- 삼성화재 공식 공개 예시 이미지를 영역별로 발췌했습니다. 이미지 저작권은 삼성화재에 있으며 개인 디자인 산출물·실제 고객 기록으로 표시하지 않습니다.
 
 - 검증되지 않은 매출, 수주액, 병원 납품 실적은 포함하지 않습니다.
 - 의료용 소모품 직접 영업 경험을 주장하지 않습니다.
