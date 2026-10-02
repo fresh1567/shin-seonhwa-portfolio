@@ -10,6 +10,7 @@
 - `styles.css` — Clinical Intelligence / Calm Precision 디자인과 반응형 레이아웃
 - `script.js` — 모바일 메뉴, 업무 방식 탭, 프로젝트 상세 패널, 스크롤 표시
 - `portfolio-hero-mobius.png` — Hero 비주얼
+- `shin-seonhwa-career-profile.pdf` — 생년·전화번호·주소·사진을 제외한 공개용 경력기술서
 - `404.html` — GitHub Pages용 오류 안내 페이지
 
 별도의 빌드 과정이나 라이브러리가 필요하지 않습니다.
@@ -35,5 +36,5 @@ Node.js 등의 정적 파일 서버로 이 폴더를 열어 확인합니다.
 
 - 검증되지 않은 매출, 수주액, 병원 납품 실적은 포함하지 않습니다.
 - 의료용 소모품 직접 영업 경험을 주장하지 않습니다.
-- 전화번호, 이메일, 상세 주소 등 개인 연락처를 노출하지 않습니다.
+- 비즈니스 연락용 이메일만 공개하며 전화번호, 생년, 상세 주소, 사진은 노출하지 않습니다.
 - 브라우저의 동작 감소 설정(`prefers-reduced-motion`)을 존중합니다.

@@ -47,25 +47,28 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
 document.querySelectorAll('.project-trigger').forEach((trigger) => {
   trigger.addEventListener('click', () => {
     const detail = document.getElementById(trigger.getAttribute('aria-controls'));
+    const actionLabel = trigger.querySelector('.project-action span');
     const expanded = trigger.getAttribute('aria-expanded') === 'true';
     trigger.setAttribute('aria-expanded', String(!expanded));
     detail.hidden = expanded;
+    if (actionLabel) actionLabel.textContent = expanded ? '상세 보기 ↗' : '상세 닫기';
   });
 });
 
 const workflowData = [
-  { title: '현장과 고객 이해', description: '의료진과 고객의 업무 맥락, 실제 사용 환경을 듣습니다.', href: '#project-b2b' },
-  { title: '문제 구조화', description: '표면의 요청과 해결해야 할 핵심 문제를 구분해 구조화합니다.', href: '#project-senior' },
-  { title: '서비스와 제안 설계', description: '고객의 문제를 서비스 흐름과 설득력 있는 제안 구조로 바꿉니다.', href: '#project-sleep' },
-  { title: '관계자 설득', description: '의료·기술·운영의 언어를 연결해 관계자의 합의를 만듭니다.', href: '#project-content' },
-  { title: '실행과 운영', description: '일정과 인력, 고객 커뮤니케이션을 조율하며 서비스를 운영합니다.', href: '#project-b2b' },
-  { title: '데이터 기반 개선', description: '운영 데이터와 현장 피드백을 다음 개선 과제로 연결합니다.', href: '#project-senior' }
+  { title: '현장과 고객 이해', description: '의료진과 고객의 업무 맥락, 실제 사용 환경을 듣습니다.', deliverables: ['현장 VOC 분석서'], href: '#project-b2b' },
+  { title: '문제 구조화', description: '표면의 요청과 해결해야 할 핵심 문제를 구분해 구조화합니다.', deliverables: ['문제 정의서', '요구사항 명세'], href: '#project-senior' },
+  { title: '서비스와 제안 설계', description: '고객의 문제를 서비스 흐름과 설득력 있는 제안 구조로 바꿉니다.', deliverables: ['서비스 기획서', '수가 제안서'], href: '#project-sleep' },
+  { title: '관계자 설득', description: '의료·기술·운영의 언어를 연결해 관계자의 합의를 만듭니다.', deliverables: ['이해관계자 협의체 WBS'], href: '#project-content' },
+  { title: '실행과 운영', description: '일정과 인력, 고객 커뮤니케이션을 조율하며 서비스를 운영합니다.', deliverables: ['운영 매뉴얼', 'SLA 지표'], href: '#project-b2b' },
+  { title: '데이터 기반 개선', description: '운영 데이터와 현장 피드백을 다음 개선 과제로 연결합니다.', deliverables: ['성과 대시보드'], href: '#project-senior' }
 ];
 const workflowTabs = [...document.querySelectorAll('[role="tab"][data-step]')];
 const workflowPanel = document.getElementById('workflow-panel');
 const panelNumber = workflowPanel.querySelector('.panel-number');
 const panelTitle = workflowPanel.querySelector('b');
 const panelDescription = workflowPanel.querySelector('[data-workflow-description]');
+const panelDeliverables = workflowPanel.querySelector('[data-workflow-deliverables]');
 const panelLink = workflowPanel.querySelector('[data-workflow-link]');
 
 function selectWorkflow(index, setFocus = false) {
@@ -78,6 +81,11 @@ function selectWorkflow(index, setFocus = false) {
   panelNumber.textContent = String(index + 1).padStart(2, '0');
   panelTitle.textContent = data.title;
   panelDescription.textContent = data.description;
+  panelDeliverables.replaceChildren(...data.deliverables.map((deliverable) => {
+    const tag = document.createElement('li');
+    tag.textContent = deliverable;
+    return tag;
+  }));
   panelLink.href = data.href;
   workflowPanel.setAttribute('aria-labelledby', workflowTabs[index].id);
   if (setFocus) workflowTabs[index].focus();
