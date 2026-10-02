@@ -15,12 +15,16 @@
   <title>신선화 | Healthcare Business Planner</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
   <script defer src="script.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <div class="scroll-progress" aria-hidden="true"><i></i></div>
 
   <header class="site-header" data-header>
     <div class="nav-shell">
@@ -44,8 +48,8 @@
 
   <main id="main">
     <section class="hero section-pad" id="intro" aria-labelledby="hero-title">
-      <div class="ambient ambient-a" aria-hidden="true"></div>
-      <div class="ambient ambient-b" aria-hidden="true"></div>
+      <div class="ambient ambient-a" data-parallax="-0.035" aria-hidden="true"></div>
+      <div class="ambient ambient-b" data-parallax="0.025" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div class="hero-copy reveal">
           <p class="eyebrow"><span></span> Healthcare Business Planner / Solution Sales</p>
@@ -60,19 +64,30 @@
           </div>
         </div>
 
-        <div class="hero-visual reveal" data-delay="1" aria-label="병원 사용부서, 구매, 공급사, 물류를 데이터가 연결하는 구조">
+        <div class="hero-visual reveal" data-delay="1" aria-label="의료 현장 이해에서 서비스 설계와 B2B 고객 운영을 거쳐 사업 기회로 연결되는 데이터 피드백 구조">
           <div class="visual-card">
             <div class="visual-heading">
               <span>CONNECTED HEALTHCARE</span>
               <span class="live-dot">SYSTEM ACTIVE</span>
             </div>
-            <div class="visual-stage">
-              <img src="./portfolio-hero-mobius.png" alt="의료 현장과 공급망을 연결하는 반투명 뫼비우스 형태" width="1672" height="941">
-              <div class="core-label" aria-hidden="true"><b>DATA</b><span>→ SERVICE → OPERATION</span></div>
-              <span class="node node-a">병원 사용부서</span>
-              <span class="node node-b">구매</span>
-              <span class="node node-c">공급사</span>
-              <span class="node node-d">물류</span>
+            <div class="visual-stage" data-hero-stage>
+              <canvas class="hero-webgl" data-hero-canvas aria-hidden="true"></canvas>
+              <img class="hero-fallback" src="./portfolio-hero-mobius.png" alt="의료 현장과 공급망을 연결하는 반투명 뫼비우스 형태" width="1672" height="941">
+              <svg class="data-stream" viewBox="0 0 400 400" aria-hidden="true">
+                <path d="M54 115 C110 32 285 34 348 126 C405 211 332 335 220 352 C106 369 35 273 65 180" pathLength="1"/>
+                <path d="M95 302 C28 232 67 104 172 68 C283 30 374 113 350 225 C328 328 204 373 112 320" pathLength="1"/>
+                <circle cx="54" cy="115" r="4"/><circle cx="348" cy="126" r="4"/><circle cx="220" cy="352" r="4"/>
+              </svg>
+              <div class="connection-system" aria-hidden="true">
+                <div class="connection-title"><i></i><span>DATA &amp; FEEDBACK LOOP</span></div>
+                <div class="connection-rail">
+                  <span><i>01</i><b>의료 현장 이해</b></span>
+                  <span><i>02</i><b>서비스 설계</b></span>
+                  <span><i>03</i><b>B2B 고객 운영</b></span>
+                  <span><i>04</i><b>사업 기회</b></span>
+                </div>
+              </div>
+              <span class="motion-hint" aria-hidden="true">MOVE TO EXPLORE</span>
             </div>
             <div class="visual-footer"><span>CLINICAL INTELLIGENCE</span><span>SUPPLY NETWORK</span></div>
           </div>
@@ -80,10 +95,10 @@
       </div>
 
       <div class="container proof-grid reveal" aria-label="주요 경험 수치">
-        <a class="proof-card" href="#career"><strong>18<small>년 이상</small></strong><span>의료와 디지털<br>헬스케어 경력</span><i aria-hidden="true">01</i></a>
-        <a class="proof-card" href="#project-b2b"><strong>3,000<small>명 이상</small></strong><span>B2B 건강관리<br>프로그램 운영 대상</span><i aria-hidden="true">02</i></a>
-        <a class="proof-card" href="#project-sleep"><strong>12<small>주</small></strong><span>데이터 기반 수면습관<br>개선 프로그램</span><i aria-hidden="true">03</i></a>
-        <a class="proof-card" href="#project-content"><strong>8<small>권</small></strong><span>월 20만 부 · 총 144권<br>의료·건강 콘텐츠</span><i aria-hidden="true">04</i></a>
+        <a class="proof-card" href="#career"><strong><span data-counter="18">18</span><small>년 이상</small></strong><span>의료와 디지털<br>헬스케어 경력</span><i aria-hidden="true">01</i></a>
+        <a class="proof-card" href="#project-b2b"><strong><span data-counter="3000" data-counter-format="comma">3,000</span><small>명 이상</small></strong><span>B2B 건강관리<br>프로그램 운영 대상</span><i aria-hidden="true">02</i></a>
+        <a class="proof-card" href="#project-sleep"><strong><span data-counter="12">12</span><small>주</small></strong><span>데이터 기반 수면습관<br>개선 프로그램</span><i aria-hidden="true">03</i></a>
+        <a class="proof-card" href="#project-content"><strong><span data-counter="8">8</span><small>권</small></strong><span>월 20만 부 · 총 144권<br>의료·건강 콘텐츠</span><i aria-hidden="true">04</i></a>
       </div>
     </section>
 
@@ -152,20 +167,30 @@
         <div class="project-grid">
           <article class="project-card reveal" id="project-b2b">
             <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-b2b">
-              <span class="project-kicker"><i>B2B OPERATIONS</i><b>01</b></span>
-              <span class="project-visual visual-b2b" aria-hidden="true"><span class="orbit"><i></i><i></i><i></i><i></i><b>3,000+</b><small>PARTICIPANTS</small></span></span>
-              <span class="project-copy"><small>3,000명 이상의 임직원</small><strong>B2B 임직원<br>건강관리 프로그램</strong><span class="project-impact">개인별 건강 문제와 참여 편차를 운영 대응 체계로 전환</span><span>만성질환, 비만, 마음건강 프로그램을 운영하고 참여자 반응에 따라 운영 방식을 조정했습니다.</span></span>
-              <span class="project-meta"><span>서비스 운영 · 운영 기획 · 고객 커뮤니케이션</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
+              <span class="project-kicker"><i>CONNECTED HEALTH</i><b>01</b></span>
+              <span class="project-visual evidence-visual evidence-phones">
+                <span class="evidence-label">ACTUAL WORK SAMPLE</span>
+                <img class="evidence-shot evidence-main" src="./assets/projects/shealth-service.png" alt="" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-secondary" src="./assets/projects/shealth-dashboard.png" alt="" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-tertiary" src="./assets/projects/shealth-permissions.png" alt="" loading="lazy" decoding="async">
+              </span>
+              <span class="project-copy"><small>삼성헬스 데이터에서 맞춤 상담까지</small><strong>삼성헬스<br>헬스플러톡</strong><span class="project-impact">분산된 건강 데이터를 상담·리포트·콘텐츠로 연결</span><span>건강 데이터를 기반으로 개인별 상담과 리포트, 건강 콘텐츠가 이어지는 모바일 서비스를 기획했습니다.</span></span>
+              <span class="project-meta"><span>프로젝트 PM · 모바일 앱 기획 · 서비스 기획</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
             </button>
             <div class="project-detail" id="project-detail-b2b" hidden>
-              <dl><div><dt>문제</dt><dd>임직원별 건강 문제와 참여 반응이 달랐습니다.</dd></div><div><dt>행동</dt><dd>만성질환·비만·마음건강 프로그램을 운영하며 커뮤니케이션을 조정했습니다.</dd></div><div><dt>결과</dt><dd>3,000명 이상을 대상으로 한 운영 경험과 개선 과제를 축적했습니다.</dd></div></dl>
+              <dl><div><dt>문제</dt><dd>삼성헬스에 축적된 라이프 데이터를 개인이 활용할 수 있는 건강관리 경험으로 바꿔야 했습니다.</dd></div><div><dt>행동</dt><dd>데이터 연동, 상담, 리포트, 콘텐츠가 이어지는 모바일 서비스 구조와 화면을 기획했습니다.</dd></div><div><dt>결과</dt><dd>측정 데이터를 일대일 맞춤 건강관리로 연결하는 서비스 흐름을 구체화했습니다.</dd></div></dl>
             </div>
           </article>
 
           <article class="project-card reveal" data-delay="1" id="project-sleep">
             <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-sleep">
               <span class="project-kicker"><i>SLEEP SERVICE</i><b>02</b></span>
-              <span class="project-visual visual-sleep" aria-hidden="true"><span class="moon"></span><span class="sleep-chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><b>12 WEEKS</b></span></span>
+              <span class="project-visual evidence-visual evidence-sleep">
+                <span class="evidence-label">ACTUAL WORK SAMPLE</span>
+                <img class="evidence-shot evidence-main" src="./assets/projects/sleep-device.png" alt="" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-secondary" src="./assets/projects/sleep-onboarding.png" alt="" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-tertiary" src="./assets/projects/sleep-report.png" alt="" loading="lazy" decoding="async">
+              </span>
               <span class="project-copy"><small>센서와 건강 데이터를 행동개선으로</small><strong>삼성헬스 및 슬립센스<br>수면개선 서비스</strong><span class="project-impact">분절된 센서 데이터를 12주 행동개선 여정으로 연결</span><span>앱, 상담, 리포트와 콘텐츠가 이어지는 12주 프로그램의 흐름을 설계했습니다.</span></span>
               <span class="project-meta"><span>프로젝트 PM · 앱 기획 · 데이터 기반 건강관리</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
             </button>
@@ -176,20 +201,30 @@
 
           <article class="project-card reveal" data-delay="1" id="project-senior">
             <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-senior">
-              <span class="project-kicker"><i>HEALTH COACHING</i><b>03</b></span>
-              <span class="project-visual visual-senior" aria-hidden="true"><span class="health-flow"><i>측정</i><b>→</b><i>상담</i><b>→</b><i>후속관리</i></span><span class="pulse"></span></span>
-              <span class="project-copy"><small>측정에서 상담과 후속관리로</small><strong>스마트경로당<br>건강코칭 서비스</strong><span class="project-impact">단순 기기 측정을 넘어 상담과 후속관리가 이어지는 현장 구조 구축</span><span>시니어 건강관리 서비스를 현장 적용과 생활 실천 중심의 구조로 개선했습니다.</span></span>
-              <span class="project-meta"><span>서비스 설계 · 건강상담 운영 · 공공 실증</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
+              <span class="project-kicker"><i>PUBLIC HEALTH PILOT</i><b>03</b></span>
+              <span class="project-visual evidence-visual evidence-landscape">
+                <span class="evidence-label">ACTUAL WORK SAMPLE</span>
+                <img class="evidence-shot evidence-main" src="./assets/projects/pilot-model.png" alt="" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-secondary" src="./assets/projects/pilot-service-flow.png" alt="" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-tertiary" src="./assets/projects/pilot-app-screens.png" alt="" loading="lazy" decoding="async">
+              </span>
+              <span class="project-copy"><small>서비스 모델에서 모바일 흐름까지</small><strong>보건산업진흥원<br>헬스케어 실증사업</strong><span class="project-impact">건강 데이터·전문가 상담·콘텐츠를 하나의 서비스 구조로 설계</span><span>서비스 목표와 역할, 전문영역별 관리 구조, 모바일 이용 흐름을 실증 가능한 제안서와 UX 산출물로 구체화했습니다.</span></span>
+              <span class="project-meta"><span>서비스 모델 · 제안서 · 공공 실증 설계</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
             </button>
             <div class="project-detail" id="project-detail-senior" hidden>
-              <dl><div><dt>문제</dt><dd>건강데이터 측정만으로는 지속적인 생활 변화를 만들기 어려웠습니다.</dd></div><div><dt>행동</dt><dd>전화 상담과 후속관리를 연결하고 현장 적용을 고려해 운영 구조를 개선했습니다.</dd></div><div><dt>결과</dt><dd>측정 중심 서비스를 상담과 생활 실천 중심으로 전환했습니다.</dd></div></dl>
+              <dl><div><dt>문제</dt><dd>건강정보, 콘텐츠, 전문가 개입이 분절되어 개인화된 관리 경험으로 이어지기 어려웠습니다.</dd></div><div><dt>행동</dt><dd>서비스 목표와 채널, 전문가 역할을 정의하고 모바일 화면과 이용 흐름을 제안서로 정리했습니다.</dd></div><div><dt>결과</dt><dd>공공 실증에 적용할 수 있는 데이터 기반 헬스케어 서비스 구조를 구체화했습니다.</dd></div></dl>
             </div>
           </article>
 
           <article class="project-card reveal" data-delay="2" id="project-content">
             <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-content">
               <span class="project-kicker"><i>MEDICAL EDITORIAL</i><b>04</b></span>
-              <span class="project-visual visual-content" aria-hidden="true"><span class="books"><i></i><i></i><i></i><i></i></span><span class="content-stat"><b>8권</b><small>월 20만 부 · 총 144권</small></span></span>
+              <span class="project-visual evidence-visual evidence-editorial">
+                <span class="evidence-label">ACTUAL WORK SAMPLE</span>
+                <img class="evidence-shot evidence-main" src="./assets/projects/content-magazines.png" alt="" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-secondary" src="./assets/projects/content-exam-book.png" alt="" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-tertiary" src="./assets/projects/content-healthtalk.png" alt="" loading="lazy" decoding="async">
+              </span>
               <span class="project-copy"><small>전문정보를 이해 가능한 언어로</small><strong>의료 및 건강<br>콘텐츠 사업</strong><span class="project-impact">어려운 의료 정보를 독자가 활용할 수 있는 고객 언어로 전환</span><span>문제집과 건강 간행물을 기획·집필·편집·감수하며 의료 정보를 고객 언어로 전환했습니다.</span></span>
               <span class="project-meta"><span>콘텐츠 기획 · 전문정보 전달 · 편집과 감수</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
             </button>

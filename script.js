@@ -1,3 +1,9 @@
+document.documentElement.classList.add('motion-ready');
+
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+let reducedMotion = motionPreference.matches;
+document.documentElement.classList.toggle('motion-reduced', reducedMotion);
+
 const header = document.querySelector('[data-header]');
 const menuButton = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.primary-nav');
@@ -25,11 +31,26 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 14);
+const parallaxItems = [...document.querySelectorAll('[data-parallax]')];
+let scrollFrame = 0;
+const onScroll = () => {
+  if (scrollFrame) return;
+  scrollFrame = window.requestAnimationFrame(() => {
+    scrollFrame = 0;
+    header.classList.toggle('is-scrolled', window.scrollY > 14);
+    const available = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    document.documentElement.style.setProperty('--scroll-progress', Math.min(1, window.scrollY / available));
+    if (!reducedMotion) {
+      parallaxItems.forEach((item) => {
+        const speed = Number(item.dataset.parallax || 0);
+        item.style.setProperty('--parallax-y', `${window.scrollY * speed}px`);
+      });
+    }
+  });
+};
 onScroll();
 window.addEventListener('scroll', onScroll, { passive: true });
 
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const revealElements = document.querySelectorAll('.reveal');
 if (reducedMotion || !('IntersectionObserver' in window)) {
   revealElements.forEach((element) => element.classList.add('is-visible'));
@@ -42,6 +63,67 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
   revealElements.forEach((element) => revealObserver.observe(element));
+}
+
+motionPreference.addEventListener('change', (event) => {
+  reducedMotion = event.matches;
+  document.documentElement.classList.toggle('motion-reduced', reducedMotion);
+  if (reducedMotion) {
+    revealElements.forEach((element) => element.classList.add('is-visible'));
+    parallaxItems.forEach((item) => item.style.setProperty('--parallax-y', '0px'));
+  }
+  window.dispatchEvent(new CustomEvent('portfolio-motion-change', { detail: { reduced: reducedMotion } }));
+});
+
+const counters = [...document.querySelectorAll('[data-counter]')];
+const runCounter = (element) => {
+  if (element.dataset.counted === 'true') return;
+  element.dataset.counted = 'true';
+  const target = Number(element.dataset.counter);
+  const format = element.dataset.counterFormat;
+  if (reducedMotion || !Number.isFinite(target)) {
+    element.textContent = format === 'comma' ? target.toLocaleString('ko-KR') : String(target);
+    return;
+  }
+  const duration = 900;
+  const start = performance.now();
+  const tick = (now) => {
+    const progress = Math.min(1, (now - start) / duration);
+    const eased = 1 - ((1 - progress) ** 3);
+    const value = Math.round(target * eased);
+    element.textContent = format === 'comma' ? value.toLocaleString('ko-KR') : String(value);
+    if (progress < 1) window.requestAnimationFrame(tick);
+  };
+  window.requestAnimationFrame(tick);
+};
+
+if ('IntersectionObserver' in window && !reducedMotion) {
+  counters.forEach((counter) => { counter.textContent = '0'; });
+  const counterObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      runCounter(entry.target);
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.65 });
+  counters.forEach((counter) => counterObserver.observe(counter));
+} else {
+  counters.forEach(runCounter);
+}
+
+const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+if (finePointer && !reducedMotion) {
+  document.querySelectorAll('.capability-card,.project-card,.q-card').forEach((surface) => {
+    surface.addEventListener('pointermove', (event) => {
+      const bounds = surface.getBoundingClientRect();
+      surface.style.setProperty('--mx', `${event.clientX - bounds.left}px`);
+      surface.style.setProperty('--my', `${event.clientY - bounds.top}px`);
+    }, { passive: true });
+    surface.addEventListener('pointerleave', () => {
+      surface.style.setProperty('--mx', '50%');
+      surface.style.setProperty('--my', '50%');
+    });
+  });
 }
 
 document.querySelectorAll('.project-trigger').forEach((trigger) => {
@@ -78,6 +160,11 @@ function selectWorkflow(index, setFocus = false) {
     tab.tabIndex = selected ? 0 : -1;
   });
   const data = workflowData[index];
+  workflowPanel.classList.remove('is-switching');
+  if (!reducedMotion) {
+    void workflowPanel.offsetWidth;
+    workflowPanel.classList.add('is-switching');
+  }
   panelNumber.textContent = String(index + 1).padStart(2, '0');
   panelTitle.textContent = data.title;
   panelDescription.textContent = data.description;
@@ -112,4 +199,212 @@ if ('IntersectionObserver' in window) {
     navLinks.forEach((link) => link.toggleAttribute('aria-current', link.getAttribute('href') === `#${visible.target.id}`));
   }, { rootMargin: '-22% 0px -67% 0px', threshold: [0, .2, .5] });
   sections.forEach((section) => spy.observe(section));
+}
+
+function initHero3D() {
+  const canvas = document.querySelector('[data-hero-canvas]');
+  const stage = document.querySelector('[data-hero-stage]');
+  const card = stage?.closest('.visual-card');
+  const saveData = Boolean(navigator.connection?.saveData);
+  if (!canvas || !stage || !card || saveData || !window.THREE || !window.THREE.GLTFLoader || !window.WebGLRenderingContext) return;
+
+  let renderer;
+  try {
+    renderer = new window.THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
+  } catch (error) {
+    return;
+  }
+
+  const THREE = window.THREE;
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
+  camera.position.set(0, 0.1, 10.2);
+  renderer.setClearColor(0x000000, 0);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.12;
+
+  scene.add(new THREE.HemisphereLight(0xf8ffff, 0x0a2342, 1.45));
+  const tealLight = new THREE.PointLight(0x35e3c1, 2.25, 18);
+  tealLight.position.set(4.8, 3.2, 5.5);
+  scene.add(tealLight);
+  const blueLight = new THREE.PointLight(0x3f82ff, 1.65, 18);
+  blueLight.position.set(-4.5, -2.5, 4.2);
+  scene.add(blueLight);
+  const limeLight = new THREE.PointLight(0xd5ff71, 1.05, 12);
+  limeLight.position.set(0, 4.4, -2);
+  scene.add(limeLight);
+
+  const modelGroup = new THREE.Group();
+  modelGroup.rotation.set(0.28, -0.36, -0.08);
+  scene.add(modelGroup);
+
+  const orbitMaterial = new THREE.MeshBasicMaterial({ color: 0x18bca2, transparent: true, opacity: 0.22, depthWrite: false });
+  const orbit = new THREE.Mesh(new THREE.TorusGeometry(3.15, 0.012, 8, 180), orbitMaterial);
+  orbit.rotation.x = 1.12;
+  orbit.rotation.z = -0.24;
+  modelGroup.add(orbit);
+
+  const core = new THREE.Mesh(
+    new THREE.IcosahedronGeometry(0.46, 3),
+    new THREE.MeshPhysicalMaterial({ color: 0x2474e5, emissive: 0x071c36, emissiveIntensity: 0.16, roughness: 0.18, metalness: 0.18, transparent: true, opacity: 0.72, clearcoat: 1 }),
+  );
+  modelGroup.add(core);
+
+  const particleCount = window.innerWidth < 640 ? 24 : 42;
+  const particlePositions = new Float32Array(particleCount * 3);
+  for (let index = 0; index < particleCount; index += 1) {
+    const angle = (index / particleCount) * Math.PI * 2;
+    const radius = 3.1 + Math.sin(index * 2.17) * 0.22;
+    particlePositions[index * 3] = Math.cos(angle) * radius;
+    particlePositions[index * 3 + 1] = Math.sin(angle * 2.5) * 0.48;
+    particlePositions[index * 3 + 2] = Math.sin(angle) * radius;
+  }
+  const particleGeometry = new THREE.BufferGeometry();
+  particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+  const particles = new THREE.Points(
+    particleGeometry,
+    new THREE.PointsMaterial({ color: 0xc9f35f, size: 0.065, transparent: true, opacity: 0.82, sizeAttenuation: true, depthWrite: false }),
+  );
+  modelGroup.add(particles);
+
+  let modelReady = false;
+  let heroVisible = true;
+  let frameRequest = 0;
+  let targetX = 0;
+  let targetY = 0;
+  let pointerX = 0;
+  let pointerY = 0;
+
+  const resize = () => {
+    const width = Math.max(1, canvas.clientWidth || stage.clientWidth);
+    const height = Math.max(1, canvas.clientHeight || stage.clientHeight);
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    if (modelReady) renderer.render(scene, camera);
+  };
+
+  const shouldAnimate = () => modelReady && heroVisible && !document.hidden && !reducedMotion;
+  const render = (time = performance.now()) => {
+    frameRequest = 0;
+    if (!modelReady) return;
+    const seconds = time * 0.001;
+    if (!reducedMotion) {
+      pointerX += (targetX - pointerX) * 0.055;
+      pointerY += (targetY - pointerY) * 0.055;
+      modelGroup.rotation.x = 0.28 + pointerY;
+      modelGroup.rotation.y = -0.36 + (seconds * 0.13) + pointerX;
+      particles.rotation.y = -seconds * 0.08;
+      particles.rotation.z = Math.sin(seconds * 0.28) * 0.11;
+      core.rotation.y = seconds * 0.22;
+      orbit.rotation.z = -0.24 + seconds * 0.045;
+    }
+    renderer.render(scene, camera);
+    if (shouldAnimate()) frameRequest = window.requestAnimationFrame(render);
+  };
+
+  const requestRender = () => {
+    if (!frameRequest && modelReady) frameRequest = window.requestAnimationFrame(render);
+  };
+
+  const loader = new THREE.GLTFLoader();
+  loader.load('./healthcare-mobius.glb', (gltf) => {
+    const material = new THREE.MeshPhysicalMaterial({
+      color: 0x39d3bb,
+      emissive: 0x032a2a,
+      emissiveIntensity: 0.16,
+      metalness: 0.18,
+      roughness: 0.17,
+      transmission: 0.22,
+      transparent: true,
+      opacity: 0.9,
+      clearcoat: 1,
+      clearcoatRoughness: 0.12,
+      side: THREE.DoubleSide,
+    });
+    gltf.scene.traverse((child) => {
+      if (!child.isMesh) return;
+      child.material = material;
+      const edgeMaterial = new THREE.LineBasicMaterial({ color: 0x2474e5, transparent: true, opacity: 0.24 });
+      child.add(new THREE.LineSegments(new THREE.EdgesGeometry(child.geometry, 34), edgeMaterial));
+    });
+    gltf.scene.scale.setScalar(0.94);
+    modelGroup.add(gltf.scene);
+    modelReady = true;
+    resize();
+    renderer.render(scene, camera);
+    stage.classList.add('is-3d-ready');
+    requestRender();
+  }, undefined, () => {
+    stage.classList.remove('is-3d-ready');
+  });
+
+  if ('ResizeObserver' in window) {
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(stage);
+  } else {
+    window.addEventListener('resize', resize, { passive: true });
+  }
+
+  if ('IntersectionObserver' in window) {
+    const visibilityObserver = new IntersectionObserver(([entry]) => {
+      heroVisible = entry.isIntersecting;
+      if (heroVisible) requestRender();
+      else if (frameRequest) {
+        window.cancelAnimationFrame(frameRequest);
+        frameRequest = 0;
+      }
+    }, { threshold: 0.05 });
+    visibilityObserver.observe(stage);
+  }
+
+  if (finePointer) {
+    stage.addEventListener('pointermove', (event) => {
+      if (reducedMotion) return;
+      const bounds = stage.getBoundingClientRect();
+      const x = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
+      const y = ((event.clientY - bounds.top) / bounds.height) * 2 - 1;
+      targetX = x * 0.12;
+      targetY = y * 0.075;
+      card.style.setProperty('--tilt-x', `${-y * 2.6}deg`);
+      card.style.setProperty('--tilt-y', `${x * 3.4}deg`);
+      requestRender();
+    }, { passive: true });
+    stage.addEventListener('pointerleave', () => {
+      targetX = 0;
+      targetY = 0;
+      card.style.setProperty('--tilt-x', '0deg');
+      card.style.setProperty('--tilt-y', '0deg');
+      requestRender();
+    });
+  }
+
+  document.addEventListener('visibilitychange', requestRender);
+  window.addEventListener('portfolio-motion-change', () => {
+    if (reducedMotion) {
+      if (frameRequest) window.cancelAnimationFrame(frameRequest);
+      frameRequest = 0;
+      targetX = 0;
+      targetY = 0;
+      modelGroup.rotation.set(0.28, -0.36, -0.08);
+      card.style.setProperty('--tilt-x', '0deg');
+      card.style.setProperty('--tilt-y', '0deg');
+      renderer.render(scene, camera);
+    } else {
+      requestRender();
+    }
+  });
+  canvas.addEventListener('webglcontextlost', () => {
+    stage.classList.remove('is-3d-ready');
+    if (frameRequest) window.cancelAnimationFrame(frameRequest);
+    frameRequest = 0;
+  });
+}
+
+try {
+  initHero3D();
+} catch (error) {
+  document.querySelector('[data-hero-stage]')?.classList.remove('is-3d-ready');
 }
