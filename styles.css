@@ -292,6 +292,22 @@ em { color: var(--teal-dark); font-style: normal; }
 .soul-signal{position:absolute;bottom:16px;left:18px;right:18px;width:max-content;max-width:calc(100% - 36px);padding:8px 12px;border:1px solid rgba(10,35,66,.12);border-radius:99px;background:rgba(255,255,255,.95);color:var(--ink);font-size:11px;font-weight:600;}
 .project-card:hover .soul-product{transform:translateY(-5px);}
 .project-card:hover .soul-screen-stack img:first-child{transform:translateY(-6px);}
+
+/* Consistent project image frames and copy baselines across paired cards. */
+.project-grid .project-visual{height:300px;}
+.project-grid .project-trigger{display:flex;flex-direction:column;width:100%;}
+.project-grid .project-trigger>span{width:100%;}
+.project-grid .project-copy{min-height:275px;}
+.project-grid .project-copy strong{min-height:71px;}
+.project-grid .project-meta{margin-top:auto;}
+.project-grid .evidence-phones .evidence-main{left:9%;top:23%;bottom:auto;width:30%;height:74%;}
+.project-grid .evidence-phones .evidence-secondary{left:35%;top:16%;width:29%;height:80%;}
+.project-grid .evidence-phones .evidence-tertiary{right:7%;top:23%;bottom:auto;width:29%;height:74%;}
+.proof-card strong.proof-label{font-size:25px;}
+.business-flow{position:relative;display:flex;flex-direction:column;gap:14px;text-align:center;}
+.business-flow>*{padding:12px 28px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.96);color:var(--ink);font-size:16px;font-weight:700;}
+.business-flow>b{background:var(--ink);color:white;}
+@media(max-width:600px){.project-grid .project-visual{height:240px;}.project-grid .project-copy{min-height:0;}.project-grid .project-copy strong{min-height:0;}.plan-label b{font-size:12px;}}
 .evidence-anyfit{height:300px;background:linear-gradient(145deg,#ebf7f2,#eaf0fb);}
 .evidence-anyfit .evidence-main{left:7%;top:22%;bottom:auto;width:31%;height:73%;transform:rotate(-3deg);}
 .evidence-anyfit .evidence-secondary{left:35%;top:15%;width:30%;height:79%;}
