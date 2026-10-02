@@ -278,6 +278,12 @@ em { color: var(--teal-dark); font-style: normal; }
   .qlogic::before{height:32px}.q-card{min-height:300px;padding:23px}.plan-label{padding:24px}.plan-label>span{font-size:54px}.plan li{padding:22px}.career-list li{grid-template-columns:103px 1fr}.career-list time{padding-left:14px;font-size:9px}.career-list div{padding:16px 13px}.career-list b{font-size:14px}.career-list div span{font-size:11px}.career-list .current b::after{display:block;width:max-content;margin:6px 0 0}.award-copy{grid-template-columns:64px minmax(0,1fr);gap:10px}.award-copy b{font-size:12px}.closing h2{font-size:34px}.closing-actions{display:grid}.footer-card{grid-template-columns:1fr;padding:22px}.footer-contact{padding:18px 0 0;border-top:1px solid rgba(255,255,255,.12);border-left:0}.site-footer p{grid-column:auto}
 }
 
+.evidence-galaxy{height:300px;background:linear-gradient(145deg,#f1edf8,#e7f1f6);}
+.evidence-galaxy .evidence-main{left:9%;top:23%;bottom:auto;width:30%;height:74%;transform:rotate(-3deg);}
+.evidence-galaxy .evidence-secondary{left:35%;top:16%;width:29%;height:80%;}
+.evidence-galaxy .evidence-tertiary{right:7%;top:23%;bottom:auto;width:29%;height:74%;transform:rotate(3deg);}
+.brochure-banner{display:block;width:100%;height:auto;margin-top:20px;border-radius:12px;}
+@media(max-width:520px){.evidence-galaxy{height:240px;}}
 .evidence-soul{height:300px;background:linear-gradient(135deg,#ecf5f4,#dce8ee);}
 .soul-product{position:absolute;left:0;bottom:7%;width:57%;height:76%;object-fit:contain;filter:drop-shadow(0 14px 16px rgba(10,35,66,.14));transition:transform .5s var(--ease-out);}
 .soul-screen-stack{position:absolute;top:22%;right:4%;width:44%;display:flex;align-items:center;gap:8px;}
