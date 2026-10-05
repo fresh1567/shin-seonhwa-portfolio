@@ -168,6 +168,28 @@ if ('IntersectionObserver' in window) {
 
 
 
+
+// Switch the evidence and future application together for every skill.
+const skillOptions = [
+ ['의료 현장 이해','외과계 중환자실 간호를 통해 의료진의 용어와 환자 관리, 병원 업무 흐름을 익혔습니다.','사용부서의 요구를 도입 조건으로','병원 사용부서와 구매 담당자의 요구를 구분하고, 실제 사용 환경을 반영한 제품 설명과 도입 제안을 준비하겠습니다.'],
+ ['서비스 기획','건강 데이터 연계·수면관리 서비스, 임직원 건강검진 설계·프로그램과 만성질환 관리 서비스를 각각 기획했습니다.','구매와 이용 흐름을 고객의 관점으로','병원 고객의 검토·도입·주문·이용 흐름을 정리하고, 고객별 안내와 플랫폼 이용 과정 개선에 적용하겠습니다.'],
+ ['제안서 · RFP','사업 제안서와 RFP를 작성하고, 서비스 목표와 수행 범위·운영 구조를 구체화했습니다.','고객 요구를 실행 가능한 제안으로','병원의 구매·물류 요구를 정리하고 도입 범위, 운영 방식과 협업 조건이 명확한 제안서를 준비하겠습니다.'],
+ ['B2B 고객 운영','기업별 건강관리 프로그램을 운영하며 고객 요구에 맞춰 안내 방식과 운영 구조를 조정했습니다.','도입 이후에도 이어지는 고객 관계','병원 고객의 이용 현황과 문의를 파악해 플랫폼 안내, 후속 대응과 지속 이용을 지원하겠습니다.'],
+ ['데이터 기반 개선','서비스 이용현황과 참여자 반응을 분석하고 운영 개선에 반영했습니다.','이용 현황을 다음 개선 과제로','플랫폼 이용 과정의 불편과 고객 피드백을 정리해, 후속 대응과 운영 개선 과제를 제안하겠습니다.'],
+ ['프로젝트 PM','앱 기획과 제품 출시 과정에서 화면·기능 설계, 일정·인력 조율과 관계자 협업을 맡았습니다.','제안부터 도입까지 실행을 연결','병원 고객과 내부 담당자·공급사 사이의 요구와 일정을 조율하며 도입과 운영이 이어지도록 지원하겠습니다.']
+];
+const skillButtons=[...document.querySelectorAll('[data-skill]')];
+const skillResult=document.querySelector('.skill-result');
+function selectSkill(index){
+ const data=skillOptions[index];if(!data||!skillResult)return;
+ skillButtons.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
+ ['title','evidence','application','plan'].forEach((name,i)=>{document.querySelector('[data-skill-'+name+']').textContent=data[i];});
+ skillResult.classList.remove('is-switching');
+ if(!reducedMotion){void skillResult.offsetWidth;skillResult.classList.add('is-switching');}
+}
+skillButtons.forEach(button=>button.addEventListener('click',()=>selectSkill(Number(button.dataset.skill))));
+selectWorkflow(0);
+
 // An actual lit 3D service object; SVG remains available if WebGL is unavailable.
 (function initServiceObject(){
  const canvas=document.querySelector('[data-service-3d]'),stage=document.querySelector('[data-hero-stage]');
