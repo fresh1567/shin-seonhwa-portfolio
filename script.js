@@ -75,42 +75,6 @@ motionPreference.addEventListener('change', (event) => {
   window.dispatchEvent(new CustomEvent('portfolio-motion-change', { detail: { reduced: reducedMotion } }));
 });
 
-const counters = [...document.querySelectorAll('[data-counter]')];
-const runCounter = (element) => {
-  if (element.dataset.counted === 'true') return;
-  element.dataset.counted = 'true';
-  const target = Number(element.dataset.counter);
-  const format = element.dataset.counterFormat;
-  if (reducedMotion || !Number.isFinite(target)) {
-    element.textContent = format === 'comma' ? target.toLocaleString('ko-KR') : String(target);
-    return;
-  }
-  const duration = 900;
-  const start = performance.now();
-  const tick = (now) => {
-    const progress = Math.min(1, (now - start) / duration);
-    const eased = 1 - ((1 - progress) ** 3);
-    const value = Math.round(target * eased);
-    element.textContent = format === 'comma' ? value.toLocaleString('ko-KR') : String(value);
-    if (progress < 1) window.requestAnimationFrame(tick);
-  };
-  window.requestAnimationFrame(tick);
-};
-
-if ('IntersectionObserver' in window && !reducedMotion) {
-  counters.forEach((counter) => { counter.textContent = '0'; });
-  const counterObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      runCounter(entry.target);
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.65 });
-  counters.forEach((counter) => counterObserver.observe(counter));
-} else {
-  counters.forEach(runCounter);
-}
-
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 if (finePointer && !reducedMotion) {
   document.querySelectorAll('.capability-card,.project-card,.q-card').forEach((surface) => {
@@ -138,12 +102,12 @@ document.querySelectorAll('.project-trigger').forEach((trigger) => {
 });
 
 const workflowData = [
-  { title: '현장과 고객 이해', description: '의료진과 고객의 업무 맥락, 실제 사용 환경을 듣습니다.', deliverables: ['현장 VOC 분석서'], href: '#project-b2b' },
-  { title: '문제 구조화', description: '표면의 요청과 해결해야 할 핵심 문제를 구분해 구조화합니다.', deliverables: ['문제 정의서', '요구사항 명세'], href: '#project-senior' },
-  { title: '서비스와 제안 설계', description: '고객의 문제를 서비스 흐름과 설득력 있는 제안 구조로 바꿉니다.', deliverables: ['서비스 기획서', '수가 제안서'], href: '#project-sleep' },
-  { title: '관계자 설득', description: '의료·기술·운영의 언어를 연결해 관계자의 합의를 만듭니다.', deliverables: ['이해관계자 협의체 WBS'], href: '#project-content' },
-  { title: '실행과 운영', description: '일정과 인력, 고객 커뮤니케이션을 조율하며 서비스를 운영합니다.', deliverables: ['운영 매뉴얼', 'SLA 지표'], href: '#project-b2b' },
-  { title: '데이터 기반 개선', description: '운영 데이터와 현장 피드백을 다음 개선 과제로 연결합니다.', deliverables: ['성과 대시보드'], href: '#project-senior' }
+  { title: '현장과 고객 이해', description: '임상과 기업 고객 운영 경험을 바탕으로 업무 맥락과 실제 사용 환경을 파악해 왔습니다.', deliverables: ['고객 요구 파악', '운영 방식 조정'], href: '#project-b2b', label: 'B2B 건강관리 운영 · 현장 요구 반영 ↗' },
+  { title: '문제 구조화', description: '청각장애인의 이용 환경에서 위험 인지 공백을 정의하고 알림 시나리오로 정리했습니다.', deliverables: ['위험 시나리오', '알림·이용 흐름'], href: '#project-soul', label: '위험 알림 앱 · 문제 정의와 제품 출시 ↗' },
+  { title: '서비스와 제안 설계', description: '건강 데이터·전문가 상담·콘텐츠를 연결하는 서비스 모델과 모바일 흐름을 설계했습니다.', deliverables: ['서비스 모델', '제안서', '모바일 화면'], href: '#project-senior', label: '공공 헬스케어 실증 · 서비스 모델 설계 ↗' },
+  { title: '관계자 협업', description: '서비스 기획과 PM을 맡아 데이터 연동, 상담, 리포트와 콘텐츠가 이어지도록 업무를 조율했습니다.', deliverables: ['프로젝트 PM', '서비스 흐름·화면 기획'], href: '#project-samsung-health', label: '건강 데이터 연계 · 기획과 PM 수행 ↗' },
+  { title: '실행과 운영', description: '기업별 프로그램 운영과 교육, 이용현황 분석을 수행하고 안내 방식과 운영 구조를 조정했습니다.', deliverables: ['프로그램 운영', '교육', '이용현황 분석'], href: '#project-b2b', label: 'B2B 건강관리 운영 · 약 3,000명 이상 대상 ↗' },
+  { title: '데이터 기반 개선', description: '이용현황과 참여자 반응을 운영 개선에 반영한 경험이 있습니다. 아래 CRM 예시에서 현황과 후속 실행을 연결하는 구조를 살펴보세요.', deliverables: ['이용현황 분석', '성과관리 CRM 예시'], href: '#project-crm', label: '성과관리 CRM · 대시보드 설계 예시 ↗' }
 ];
 const workflowTabs = [...document.querySelectorAll('[role="tab"][data-step]')];
 const workflowPanel = document.getElementById('workflow-panel');
@@ -174,6 +138,7 @@ function selectWorkflow(index, setFocus = false) {
     return tag;
   }));
   panelLink.href = data.href;
+  panelLink.textContent = data.label;
   workflowPanel.setAttribute('aria-labelledby', workflowTabs[index].id);
   if (setFocus) workflowTabs[index].focus();
 }
@@ -201,210 +166,46 @@ if ('IntersectionObserver' in window) {
   sections.forEach((section) => spy.observe(section));
 }
 
-function initHero3D() {
-  const canvas = document.querySelector('[data-hero-canvas]');
-  const stage = document.querySelector('[data-hero-stage]');
-  const card = stage?.closest('.visual-card');
-  const saveData = Boolean(navigator.connection?.saveData);
-  if (!canvas || !stage || !card || saveData || !window.THREE || !window.THREE.GLTFLoader || !window.WebGLRenderingContext) return;
 
-  let renderer;
-  try {
-    renderer = new window.THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
-  } catch (error) {
-    return;
-  }
 
-  const THREE = window.THREE;
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
-  camera.position.set(0, 0.1, 10.2);
-  renderer.setClearColor(0x000000, 0);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
-  renderer.outputEncoding = THREE.sRGBEncoding;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.12;
+// An actual lit 3D service object; SVG remains available if WebGL is unavailable.
+(function initServiceObject(){
+ const canvas=document.querySelector('[data-service-3d]'),stage=document.querySelector('[data-hero-stage]');
+ if(!canvas||!window.THREE||navigator.connection?.saveData)return;
+ const T=window.THREE;let renderer;
+ try{renderer=new T.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});}catch{return;}
+ renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.outputEncoding=T.sRGBEncoding;renderer.toneMapping=T.ACESFilmicToneMapping;
+ const scene=new T.Scene(),camera=new T.PerspectiveCamera(34,1,.1,30);camera.position.set(3.5,2.8,5.5);camera.lookAt(0,0,0);
+ scene.add(new T.HemisphereLight(0xc2fff2,0x10253c,1.1));
+ const key=new T.DirectionalLight(0xffffff,2);key.position.set(-3,5,4);scene.add(key);
+ const rim=new T.PointLight(0x40e5c6,2,12);rim.position.set(2,1,-2);scene.add(rim);
+ const group=new T.Group();scene.add(group);
 
-  scene.add(new THREE.HemisphereLight(0xf8ffff, 0x0a2342, 1.45));
-  const tealLight = new THREE.PointLight(0x35e3c1, 2.25, 18);
-  tealLight.position.set(4.8, 3.2, 5.5);
-  scene.add(tealLight);
-  const blueLight = new THREE.PointLight(0x3f82ff, 1.65, 18);
-  blueLight.position.set(-4.5, -2.5, 4.2);
-  scene.add(blueLight);
-  const limeLight = new THREE.PointLight(0xd5ff71, 1.05, 12);
-  limeLight.position.set(0, 4.4, -2);
-  scene.add(limeLight);
+ const material=new T.MeshPhysicalMaterial({color:0x2e7080,metalness:.3,roughness:.28,clearcoat:1});
+ const white=new T.MeshStandardMaterial({color:0xc9e9e9,metalness:.15,roughness:.32});
+ const accent=new T.MeshStandardMaterial({color:0x98f6d4,emissive:0x2a9477,emissiveIntensity:.45});
+ function box(w,h,d,x,y,z,mat=material){const mesh=new T.Mesh(new T.BoxGeometry(w,h,d),mat);mesh.position.set(x,y,z);group.add(mesh);return mesh;}
+ // Hospital silhouette anchors the purchasing and logistics network.
+ box(.86,1.5,.6,0,.12,0,white);box(.55,.95,.58,-.66,-.15,0);box(.55,.95,.58,.66,-.15,0);
+ box(.31,.065,.025,0,.57,.315,accent);box(.065,.31,.025,0,.57,.315,accent);
+ for(let row=0;row<2;row++)for(let col=0;col<2;col++)box(.13,.15,.022,-.2+col*.4,.14-row*.3,.316,material);
+ box(.24,.32,.025,0,-.46,.32,material);
+ for(const x of [-.68,.68])for(let y=0;y<2;y++)box(.16,.14,.025,x,-.1-y*.28,.31,white);
+ const platform=new T.Mesh(new T.CylinderGeometry(1.65,1.65,.11,64),new T.MeshPhysicalMaterial({color:0x175469,metalness:.55,roughness:.25}));platform.position.y=-.9;group.add(platform);
+ const orbit=new T.Mesh(new T.TorusGeometry(1.42,.018,8,80),accent);orbit.rotation.x=Math.PI/2;orbit.position.y=-.82;group.add(orbit);
+ const satellites=[];
+ for(let i=0;i<3;i++){const angle=i*Math.PI*2/3+.4;const node=new T.Group();node.position.set(Math.cos(angle)*1.4,-.58,Math.sin(angle)*1.4);group.add(node);
+ const sphere=new T.Mesh(new T.SphereGeometry(.16,20,16),new T.MeshStandardMaterial({color:[0x72b2ff,0x92f4d3,0xd0e992][i],metalness:.3,roughness:.22}));node.add(sphere);satellites.push(node);
+ const curve=new T.CatmullRomCurve3([node.position.clone(),new T.Vector3(node.position.x*.65,-.72,node.position.z*.65),new T.Vector3(0,-.73,0)]);
+ group.add(new T.Mesh(new T.TubeGeometry(curve,24,.012,6,false),new T.MeshBasicMaterial({color:0x65b5ba,transparent:true,opacity:.6})));}
+ let visible=false,frame=0,elapsed=0,last=0;
+ function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();renderer.render(scene,camera);}
+ function draw(t){frame=0;if(last&&!reducedMotion)elapsed+=Math.min((t-last)/1000,.05);last=t;group.rotation.y=reducedMotion?0:Math.sin(elapsed*.4)*.35;group.position.y=reducedMotion?0:Math.sin(elapsed*.8)*.045;renderer.render(scene,camera);if(visible&&!document.hidden&&!reducedMotion)frame=requestAnimationFrame(draw);}
+ function stop(){cancelAnimationFrame(frame);frame=0;last=0;}
+ function start(){if(visible&&!document.hidden&&!frame){last=0;frame=requestAnimationFrame(draw);}}
+ resize();stage.classList.add('has-service-3d');new ResizeObserver(resize).observe(canvas);
+ new IntersectionObserver(([e])=>{visible=e.isIntersecting;visible?start():stop();}).observe(stage);
+ document.addEventListener('visibilitychange',()=>document.hidden?stop():start());window.addEventListener('portfolio-motion-change',()=>{stop();draw(performance.now());start();});
+ canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();stop();stage.classList.remove('has-service-3d');});
+})();
 
-  const modelGroup = new THREE.Group();
-  modelGroup.rotation.set(0.28, -0.36, -0.08);
-  scene.add(modelGroup);
-
-  const orbitMaterial = new THREE.MeshBasicMaterial({ color: 0x18bca2, transparent: true, opacity: 0.22, depthWrite: false });
-  const orbit = new THREE.Mesh(new THREE.TorusGeometry(3.15, 0.012, 8, 180), orbitMaterial);
-  orbit.rotation.x = 1.12;
-  orbit.rotation.z = -0.24;
-  modelGroup.add(orbit);
-
-  const core = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(0.46, 3),
-    new THREE.MeshPhysicalMaterial({ color: 0x2474e5, emissive: 0x071c36, emissiveIntensity: 0.16, roughness: 0.18, metalness: 0.18, transparent: true, opacity: 0.72, clearcoat: 1 }),
-  );
-  modelGroup.add(core);
-
-  const particleCount = window.innerWidth < 640 ? 24 : 42;
-  const particlePositions = new Float32Array(particleCount * 3);
-  for (let index = 0; index < particleCount; index += 1) {
-    const angle = (index / particleCount) * Math.PI * 2;
-    const radius = 3.1 + Math.sin(index * 2.17) * 0.22;
-    particlePositions[index * 3] = Math.cos(angle) * radius;
-    particlePositions[index * 3 + 1] = Math.sin(angle * 2.5) * 0.48;
-    particlePositions[index * 3 + 2] = Math.sin(angle) * radius;
-  }
-  const particleGeometry = new THREE.BufferGeometry();
-  particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
-  const particles = new THREE.Points(
-    particleGeometry,
-    new THREE.PointsMaterial({ color: 0xc9f35f, size: 0.065, transparent: true, opacity: 0.82, sizeAttenuation: true, depthWrite: false }),
-  );
-  modelGroup.add(particles);
-
-  let modelReady = false;
-  let heroVisible = true;
-  let frameRequest = 0;
-  let targetX = 0;
-  let targetY = 0;
-  let pointerX = 0;
-  let pointerY = 0;
-
-  const resize = () => {
-    const width = Math.max(1, canvas.clientWidth || stage.clientWidth);
-    const height = Math.max(1, canvas.clientHeight || stage.clientHeight);
-    renderer.setSize(width, height, false);
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
-    if (modelReady) renderer.render(scene, camera);
-  };
-
-  const shouldAnimate = () => modelReady && heroVisible && !document.hidden && !reducedMotion;
-  const render = (time = performance.now()) => {
-    frameRequest = 0;
-    if (!modelReady) return;
-    const seconds = time * 0.001;
-    if (!reducedMotion) {
-      pointerX += (targetX - pointerX) * 0.055;
-      pointerY += (targetY - pointerY) * 0.055;
-      modelGroup.rotation.x = 0.28 + pointerY;
-      modelGroup.rotation.y = -0.36 + (seconds * 0.13) + pointerX;
-      particles.rotation.y = -seconds * 0.08;
-      particles.rotation.z = Math.sin(seconds * 0.28) * 0.11;
-      core.rotation.y = seconds * 0.22;
-      orbit.rotation.z = -0.24 + seconds * 0.045;
-    }
-    renderer.render(scene, camera);
-    if (shouldAnimate()) frameRequest = window.requestAnimationFrame(render);
-  };
-
-  const requestRender = () => {
-    if (!frameRequest && modelReady) frameRequest = window.requestAnimationFrame(render);
-  };
-
-  const loader = new THREE.GLTFLoader();
-  loader.load('./healthcare-mobius.glb', (gltf) => {
-    const material = new THREE.MeshPhysicalMaterial({
-      color: 0x39d3bb,
-      emissive: 0x032a2a,
-      emissiveIntensity: 0.16,
-      metalness: 0.18,
-      roughness: 0.17,
-      transmission: 0.22,
-      transparent: true,
-      opacity: 0.9,
-      clearcoat: 1,
-      clearcoatRoughness: 0.12,
-      side: THREE.DoubleSide,
-    });
-    gltf.scene.traverse((child) => {
-      if (!child.isMesh) return;
-      child.material = material;
-      const edgeMaterial = new THREE.LineBasicMaterial({ color: 0x2474e5, transparent: true, opacity: 0.24 });
-      child.add(new THREE.LineSegments(new THREE.EdgesGeometry(child.geometry, 34), edgeMaterial));
-    });
-    gltf.scene.scale.setScalar(0.94);
-    modelGroup.add(gltf.scene);
-    modelReady = true;
-    resize();
-    renderer.render(scene, camera);
-    stage.classList.add('is-3d-ready');
-    requestRender();
-  }, undefined, () => {
-    stage.classList.remove('is-3d-ready');
-  });
-
-  if ('ResizeObserver' in window) {
-    const resizeObserver = new ResizeObserver(resize);
-    resizeObserver.observe(stage);
-  } else {
-    window.addEventListener('resize', resize, { passive: true });
-  }
-
-  if ('IntersectionObserver' in window) {
-    const visibilityObserver = new IntersectionObserver(([entry]) => {
-      heroVisible = entry.isIntersecting;
-      if (heroVisible) requestRender();
-      else if (frameRequest) {
-        window.cancelAnimationFrame(frameRequest);
-        frameRequest = 0;
-      }
-    }, { threshold: 0.05 });
-    visibilityObserver.observe(stage);
-  }
-
-  if (finePointer) {
-    stage.addEventListener('pointermove', (event) => {
-      if (reducedMotion) return;
-      const bounds = stage.getBoundingClientRect();
-      const x = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
-      const y = ((event.clientY - bounds.top) / bounds.height) * 2 - 1;
-      targetX = x * 0.12;
-      targetY = y * 0.075;
-      card.style.setProperty('--tilt-x', `${-y * 2.6}deg`);
-      card.style.setProperty('--tilt-y', `${x * 3.4}deg`);
-      requestRender();
-    }, { passive: true });
-    stage.addEventListener('pointerleave', () => {
-      targetX = 0;
-      targetY = 0;
-      card.style.setProperty('--tilt-x', '0deg');
-      card.style.setProperty('--tilt-y', '0deg');
-      requestRender();
-    });
-  }
-
-  document.addEventListener('visibilitychange', requestRender);
-  window.addEventListener('portfolio-motion-change', () => {
-    if (reducedMotion) {
-      if (frameRequest) window.cancelAnimationFrame(frameRequest);
-      frameRequest = 0;
-      targetX = 0;
-      targetY = 0;
-      modelGroup.rotation.set(0.28, -0.36, -0.08);
-      card.style.setProperty('--tilt-x', '0deg');
-      card.style.setProperty('--tilt-y', '0deg');
-      renderer.render(scene, camera);
-    } else {
-      requestRender();
-    }
-  });
-  canvas.addEventListener('webglcontextlost', () => {
-    stage.classList.remove('is-3d-ready');
-    if (frameRequest) window.cancelAnimationFrame(frameRequest);
-    frameRequest = 0;
-  });
-}
-
-try {
-  initHero3D();
-} catch (error) {
-  document.querySelector('[data-hero-stage]')?.classList.remove('is-3d-ready');
-}

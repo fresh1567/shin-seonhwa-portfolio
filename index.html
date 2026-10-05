@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f8fa">
-  <meta name="description" content="의료 현장 경험과 디지털 헬스케어 기획 역량을 연결하는 신선화의 포트폴리오입니다.">
+  <meta name="description" content="중환자실 간호에서 서비스 기획·제품 출시·고객 운영으로, 데이터와 서비스 분야 수상으로 이어진 신선화의 포트폴리오입니다.">
   <meta property="og:title" content="신선화 | Healthcare Business Planner">
   <meta property="og:description" content="의료현장을 이해하고, 고객의 문제를 서비스와 매출 기회로 연결합니다.">
   <meta property="og:type" content="website">
@@ -16,11 +16,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="styles.css?v=20261005-type">
   <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-  <script defer src="script.js"></script>
+  <script defer src="script.js?v=20261005-type"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -37,9 +37,10 @@
       </button>
       <nav class="primary-nav" id="primary-nav" aria-label="주요 메뉴">
         <a href="#intro">소개</a>
-        <a href="#capabilities">역량</a>
-        <a href="#projects">프로젝트</a>
-        <a href="#qlogic">큐로직 기여</a>
+        <a href="#capabilities">출발점</a>
+        <a href="#projects">서비스와 실행</a>
+        <a href="#awards">주요 수상</a>
+        <a href="#qlogic">큐로직 적용 역량</a>
         <a href="#career">경력</a>
         <a class="nav-cta" href="#career">경력기술서 보기 <span aria-hidden="true">↘</span></a>
       </nav>
@@ -53,75 +54,82 @@
       <div class="container hero-grid">
         <div class="hero-copy reveal">
           <p class="eyebrow"><span></span> Healthcare Business Planner / Solution Sales</p>
-          <h1 id="hero-title">의료현장을 이해하고,<br>고객의 문제를 <em>서비스와<br class="desktop-break"> 매출 기회</em>로 연결합니다.</h1>
-          <p class="hero-summary">외과계 중환자실 간호사로 출발해 18년 동안 디지털 헬스케어 서비스 기획과 B2B 운영을 맡았습니다. 의료진과 고객의 요구를 파악해 제안서, 서비스 구조, 운영 방식으로 구체화해 왔습니다.</p>
+          <h1 id="hero-title">환자를 돌보던 시선으로,<br><em>사람들이 사용하는<br class="desktop-break"> 서비스</em>를 만들었습니다.</h1>
+          <p class="hero-summary">중환자실 간호에서 서비스 기획과 PM, 제품 출시와 고객 운영으로 역할을 넓혔습니다. 임상에서 쌓은 이해를 디지털 헬스케어에 적용했고, 데이터 활용과 서비스 기획 분야의 수상으로 이어졌습니다.</p>
           <ul class="chip-list" aria-label="핵심 역량 요약">
             <li>간호사 출신</li><li>헬스케어 기획 및 PM</li><li>B2B 고객 운영</li>
           </ul>
           <div class="hero-actions">
-            <a class="button button-primary" href="#qlogic">큐로직 기여안 보기 <span aria-hidden="true">→</span></a>
-            <a class="button button-secondary" href="#projects">대표 경험 보기 <span aria-hidden="true">↓</span></a>
+            <a class="button button-primary" href="#capabilities">임상에서 시작된 이야기 <span aria-hidden="true">→</span></a>
+            <a class="button button-secondary" href="#awards">수상과 수행 경험 보기 <span aria-hidden="true">↓</span></a>
           </div>
         </div>
 
-        <div class="hero-visual reveal" data-delay="1" aria-label="의료 현장 이해에서 서비스 설계와 B2B 고객 운영을 거쳐 사업 기회로 연결되는 데이터 피드백 구조">
-          <div class="visual-card">
-            <div class="visual-heading">
-              <span>CONNECTED HEALTHCARE</span>
-              <span class="live-dot">SYSTEM ACTIVE</span>
-            </div>
-            <div class="visual-stage" data-hero-stage>
-              <canvas class="hero-webgl" data-hero-canvas aria-hidden="true"></canvas>
-              <img class="hero-fallback" src="./portfolio-hero-mobius.png" alt="의료 현장과 공급망을 연결하는 반투명 뫼비우스 형태" width="1672" height="941">
-              <svg class="data-stream" viewBox="0 0 400 400" aria-hidden="true">
-                <path d="M54 115 C110 32 285 34 348 126 C405 211 332 335 220 352 C106 369 35 273 65 180" pathLength="1"/>
-                <path d="M95 302 C28 232 67 104 172 68 C283 30 374 113 350 225 C328 328 204 373 112 320" pathLength="1"/>
-                <circle cx="54" cy="115" r="4"/><circle cx="348" cy="126" r="4"/><circle cx="220" cy="352" r="4"/>
-              </svg>
-              <div class="connection-system" aria-hidden="true">
-                <div class="connection-title"><i></i><span>DATA &amp; FEEDBACK LOOP</span></div>
-                <div class="connection-rail">
-                  <span><i>01</i><b>의료 현장 이해</b></span>
-                  <span><i>02</i><b>서비스 설계</b></span>
-                  <span><i>03</i><b>B2B 고객 운영</b></span>
-                  <span><i>04</i><b>사업 기회</b></span>
-                </div>
+        <div class="hero-visual reveal" data-delay="1" aria-label="임상 경험과 서비스 기획, 고객 운영과 다음 사업 기회를 연결하는 흐름">
+          <div class="visual-card convergence-card">
+              <div class="visual-heading"><span>FROM CARE TO CONNECTION</span><span class="live-dot">큐로직에서의 다음 역할</span></div>
+              <div class="visual-stage convergence-stage" data-hero-stage>
+                <canvas class="service-3d" data-service-3d aria-hidden="true"></canvas>
+                <svg class="convergence-art" viewBox="0 0 480 440" role="img" aria-label="임상 경험과 서비스 설계, 고객 운영 역량을 병원과 공급사를 연결하는 큐로직의 구매 물류 플랫폼에 적용하는 방향">
+                  <defs>
+                    <linearGradient id="flowA"><stop stop-color="#49d9c1"/><stop offset="1" stop-color="#aeffe1"/></linearGradient>
+                    <linearGradient id="flowB"><stop stop-color="#709cf6"/><stop offset="1" stop-color="#b8d4ff"/></linearGradient>
+                    <linearGradient id="flowC"><stop stop-color="#b9d971"/><stop offset="1" stop-color="#e4f5bd"/></linearGradient>
+                    <radialGradient id="coreGlow"><stop stop-color="#47cfb2" stop-opacity=".24"/><stop offset="1" stop-color="#47cfb2" stop-opacity="0"/></radialGradient>
+                    <linearGradient id="coreFace" x2="1" y2="1"><stop stop-color="#24495b"/><stop offset="1" stop-color="#122d43"/></linearGradient>
+                  </defs>
+                  <circle cx="310" cy="233" r="130" fill="url(#coreGlow)"/>
+                  <g stroke="#92b6cf" stroke-opacity=".09" fill="none"><path d="M20 340L260 200L460 316M20 300L260 160L460 276M20 380L260 240L460 356"/><path d="M110 400L350 260M190 430L430 290M30 370L270 230"/></g>
+                  <g fill="none" stroke-linecap="round">
+                    <path class="flow-base" d="M72 113C213 113 172 230 280 230" stroke="url(#flowA)"/>
+                    <path class="flow-base" d="M72 225C158 225 207 230 280 230" stroke="url(#flowB)"/>
+                    <path class="flow-base" d="M72 337C210 337 178 230 280 230" stroke="url(#flowC)"/>
+                    <path class="flow-signal signal-a" d="M72 113C213 113 172 230 280 230" stroke="#c7fff0"/>
+                    <path class="flow-signal signal-b" d="M72 225C158 225 207 230 280 230" stroke="#d6e5ff"/>
+                    <path class="flow-signal signal-c" d="M72 337C210 337 178 230 280 230" stroke="#f0ffd2"/>
+                  </g>
+                  <g font-family="Pretendard Variable, Pretendard, sans-serif"><g fill="#49d9c1"><circle cx="72" cy="113" r="5"/><text x="40" y="73" font-size="11" letter-spacing="2">01 / CLINICAL</text></g><text x="40" y="96" fill="#f2f8ff" font-size="20" font-weight="700">임상 경험</text>
+                  <g fill="#8db3ff"><circle cx="72" cy="225" r="5"/><text x="40" y="185" font-size="11" letter-spacing="2">02 / DESIGN</text></g><text x="40" y="208" fill="#f2f8ff" font-size="20" font-weight="700">서비스 설계</text>
+                  <g fill="#c4e18a"><circle cx="72" cy="337" r="5"/><text x="40" y="297" font-size="11" letter-spacing="2">03 / OPERATION</text></g><text x="40" y="320" fill="#f2f8ff" font-size="20" font-weight="700">고객 운영</text></g>
+                  <g class="service-core"><ellipse cx="344" cy="257" rx="74" ry="26" fill="#1d5368" stroke="#7de5cb" stroke-width="2"/><path d="M315 249V177H372V249M287 246V205H314M373 205H400V246" fill="#5394a0" stroke="#b6e5de" stroke-width="2"/><path d="M332 195H355M344 184V207" stroke="#afffe0" stroke-width="5"/><path d="M329 224H337M351 224H359M330 240H357" stroke="#153c52" stroke-width="7"/><circle cx="283" cy="260" r="8" fill="#8bbdff"/><circle cx="400" cy="260" r="8" fill="#cff294"/></g>
+                  <text x="344" y="332" text-anchor="middle" fill="#eff9fa" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="18" font-weight="700">병원과 공급사의 연결</text><text x="344" y="356" text-anchor="middle" fill="#92b0c4" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="9">입사 후 · 구매·물류 플랫폼에 역량 적용</text>
+                </svg>
               </div>
-              <span class="motion-hint" aria-hidden="true">MOVE TO EXPLORE</span>
+              <div class="visual-footer"><span>현장을 이해하고</span><span>설계하고</span><span>실행합니다</span></div>
             </div>
-            <div class="visual-footer"><span>CLINICAL INTELLIGENCE</span><span>SUPPLY NETWORK</span></div>
           </div>
         </div>
       </div>
 
-      <div class="container proof-grid reveal" aria-label="주요 경험 수치">
-        <a class="proof-card" href="#career"><strong><span data-counter="18">18</span><small>년 이상</small></strong><span>의료와 디지털<br>헬스케어 경력</span><i aria-hidden="true">01</i></a>
-        <a class="proof-card" href="#project-b2b"><strong><span data-counter="3000" data-counter-format="comma">3,000</span><small>명 이상</small></strong><span>B2B 건강관리<br>프로그램 운영 대상</span><i aria-hidden="true">02</i></a>
-        <a class="proof-card" href="#project-sleep"><strong><span data-counter="12">12</span><small>주</small></strong><span>데이터 기반 수면습관<br>개선 프로그램</span><i aria-hidden="true">03</i></a>
-        <a class="proof-card" href="#project-content"><strong class="proof-label">도서 출판</strong><span>대한간호협회 소속<br>국가고시 문제집 · 간호사 도서</span><i aria-hidden="true">04</i></a>
+      <div class="container award-teaser reveal">
+        <div><p class="section-index">CLINICAL EXPERIENCE → DATA &amp; SERVICE</p><h2>간호에서 시작한 전문성,<br>데이터와 서비스 분야의 수상으로.</h2></div>
+        <a href="#awards" class="teaser-prize"><small>2022 · 데이터 활용</small><strong>국회의장상 <em>대상</em></strong><span>국회 데이터 활용 경진대회 <b aria-hidden="true">↗</b></span></a>
+        <a href="#award-mydata" class="teaser-prize"><small>2025 · 수상 과제 주도 수행</small><strong>한국데이터산업진흥원<br><em>원장상</em></strong><span>마이데이터 컨설팅 지원 사업 성과공유회 <b aria-hidden="true">↗</b></span></a>
       </div>
+      <nav class="container story-map" aria-label="포트폴리오 이야기 순서"><a href="#capabilities"><small>01</small><b>임상에서 얻은 시선</b></a><a href="#projects"><small>02</small><b>서비스로 만든 경험</b></a><a href="#execution"><small>03</small><b>출시와 현장 운영</b></a><a href="#awards"><small>04</small><b>수상으로 이어진 경험</b></a><a href="#qlogic"><small>05</small><b>큐로직에서의 다음 역할</b></a></nav>
+
     </section>
 
     <section class="evidence section-pad" id="capabilities" aria-labelledby="capabilities-title">
       <div class="container">
         <div class="section-heading reveal">
-          <p class="section-index">01 / CORE CAPABILITIES</p>
-          <h2 id="capabilities-title">현장을 알고, 구조를 만들고,<br><em>고객을 움직였습니다.</em></h2>
-          <p>의료 전문성을 출발점으로, 서비스 기획과 고객 운영을 하나의 실행 흐름으로 연결합니다.</p>
+          <p class="section-index">01 / THE CLINICAL FOUNDATION</p>
+          <h2 id="capabilities-title">출발점은 중환자실.<br><em>서비스를 보는 기준이 됐습니다.</em></h2>
+          <p>환자와 의료진을 가까이에서 이해한 경험이, 이후 서비스의 요구사항과 이용 흐름을 설계하는 바탕이 됐습니다.</p>
         </div>
         <div class="capability-grid">
           <article class="capability-card reveal">
             <div class="capability-top"><span>01</span><div class="line-icon" aria-hidden="true">✣</div></div>
             <p class="caption">MEDICAL LITERACY</p>
             <h3>의료 현장 이해</h3>
-            <p>외과계 중환자실에서 수술 환자와 간, 신장이식 환자를 간호했습니다. 의료진의 언어와 병원 업무 흐름을 이해합니다.</p>
+            <p>외과계 중환자실에서 수술 환자와 간·신장이식 환자를 직접 간호한 경험이 있습니다. 임상 경험을 통해 의료진의 용어, 환자 관리 과정과 병원 업무 흐름에 대한 이해를 갖췄습니다.</p>
             <div class="mini-flow" aria-hidden="true"><span>환자</span><i></i><span>의료진</span><i></i><span>업무</span></div>
           </article>
           <article class="capability-card reveal" data-delay="1">
             <div class="capability-top"><span>02</span><div class="line-icon" aria-hidden="true">⌘</div></div>
             <p class="caption">SERVICE ARCHITECTURE</p>
             <h3>서비스 기획과 실행</h3>
-            <p>삼성헬스, 수면관리, 건강검진, 만성질환 관리 서비스를 기획했습니다. 알고리즘과 화면 설계부터 일정, 인력, 운영 개선까지 경험했습니다.</p>
+            <p>건강 데이터 연계 서비스와 수면관리 서비스를 기획했습니다. 임직원 건강검진 설계·프로그램 서비스 기획과 만성질환 관리 서비스 기획을 각각 수행했습니다. 알고리즘·화면 설계부터 일정·인력 조율, 운영 개선까지 맡았습니다.</p>
             <div class="mini-flow" aria-hidden="true"><span>설계</span><i></i><span>실행</span><i></i><span>개선</span></div>
           </article>
           <article class="capability-card reveal" data-delay="2">
@@ -135,203 +143,214 @@
       </div>
     </section>
 
-    <section class="workflow section-pad" aria-labelledby="workflow-title">
-      <div class="container">
-        <div class="section-heading compact reveal">
-          <p class="section-index">02 / HOW I WORK</p>
-          <h2 id="workflow-title">복잡한 문제를, <em>실행 가능한 흐름</em>으로.</h2>
-        </div>
-        <div class="workflow-shell reveal">
-          <div class="workflow-tabs" role="tablist" aria-label="업무 방식 단계">
-            <button type="button" role="tab" id="workflow-tab-0" aria-controls="workflow-panel" aria-selected="true" data-step="0" data-preview="업무 맥락과 실제 사용 환경을 관찰합니다."><span>01</span><b>현장과<br>고객 이해</b></button>
-            <button type="button" role="tab" id="workflow-tab-1" aria-controls="workflow-panel" aria-selected="false" data-step="1" data-preview="표면의 요청과 핵심 문제를 구분합니다." tabindex="-1"><span>02</span><b>문제<br>구조화</b></button>
-            <button type="button" role="tab" id="workflow-tab-2" aria-controls="workflow-panel" aria-selected="false" data-step="2" data-preview="문제를 서비스와 제안 구조로 바꿉니다." tabindex="-1"><span>03</span><b>서비스와<br>제안 설계</b></button>
-            <button type="button" role="tab" id="workflow-tab-3" aria-controls="workflow-panel" aria-selected="false" data-step="3" data-preview="관계자의 언어를 연결해 합의를 만듭니다." tabindex="-1"><span>04</span><b>관계자<br>설득</b></button>
-            <button type="button" role="tab" id="workflow-tab-4" aria-controls="workflow-panel" aria-selected="false" data-step="4" data-preview="일정·인력·커뮤니케이션을 조율합니다." tabindex="-1"><span>05</span><b>실행과<br>운영</b></button>
-            <button type="button" role="tab" id="workflow-tab-5" aria-controls="workflow-panel" aria-selected="false" data-step="5" data-preview="운영 데이터와 피드백을 개선에 반영합니다." tabindex="-1"><span>06</span><b>데이터 기반<br>개선</b></button>
-          </div>
-          <div class="workflow-panel" id="workflow-panel" role="tabpanel" tabindex="0" aria-labelledby="workflow-tab-0" aria-live="polite">
-            <div class="workflow-panel-copy"><span class="panel-number">01</span><div><p><b>현장과 고객 이해</b><br><span data-workflow-description>의료진과 고객의 업무 맥락, 실제 사용 환경을 듣습니다.</span></p><ul class="deliverable-tags" data-workflow-deliverables aria-label="주요 산출물"><li>현장 VOC 분석서</li></ul></div></div>
-            <a href="#project-b2b" data-workflow-link>관련 프로젝트 보기 <span aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="projects section-pad" id="projects" aria-labelledby="projects-title">
       <div class="container">
         <div class="section-heading split reveal">
-          <div><p class="section-index">03 / SELECTED WORK</p><h2 id="projects-title">이력서의 한 줄을,<br><em>문제 해결 과정</em>으로 펼쳤습니다.</h2></div>
-          <p>수치보다 과정에 집중했습니다.<br>카드를 눌러 문제·행동·결과를 확인하세요.</p>
+          <div><p class="section-index">02 / FROM CLINICAL INSIGHT TO SERVICE</p><h2 id="projects-title">현장에서 얻은 이해를,<br><em>서비스 구조</em>로 옮겼습니다.</h2></div>
+          <p>데이터가 상담과 생활 관리로 이어지도록 설계했습니다.<br>각 프로젝트에서 맡은 역할과 실제 산출물을 펼쳐보세요.</p>
         </div>
         <div class="project-grid">
-          <article class="project-card reveal project-featured" id="project-galaxy">
-            <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-galaxy">
-              <span class="project-kicker"><i>CONNECTED CARE / TAEYANG LIFE</i><b>01</b></span>
-              <span class="project-visual evidence-visual evidence-phones evidence-galaxy">
-                <span class="evidence-label">SERVICE BROCHURE · 2026.06</span>
-                <img class="evidence-shot evidence-main" src="./assets/projects/galaxy-heart.png" alt="태양라이프 안내장의 워치 연동 심박수 확인 예시 화면" loading="lazy" decoding="async">
-                <img class="evidence-shot evidence-secondary" src="./assets/projects/galaxy-data.png" alt="삼성헬스 데이터가 연동된 태양라이프 헬스케어 앱 예시 화면" loading="lazy" decoding="async">
-                <img class="evidence-shot evidence-tertiary" src="./assets/projects/galaxy-caregiver.png" alt="기준 외 측정값 알림을 간호사와 보호자 확인으로 연결하는 안내 화면" loading="lazy" decoding="async">
-              </span>
-              <span class="project-copy"><small>태양라이프 갤럭시케어</small><strong>갤럭시워치 데이터와<br>간호사 안부 확인</strong><span class="project-impact">웨어러블의 건강정보를 고객의 일상 관리와 상담으로 연결</span><span>보험사·상조 고객 대상 건강코칭 서비스 설계와 총괄 운영 경험을, 워치 데이터 연동·기준 외 알림·안부 확인으로 이어지는 갤럭시케어 사례로 보여드립니다.</span></span>
-              <span class="project-meta"><span>건강코칭 서비스 설계 · 운영 · 고객 안내</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
-            </button>
-            <div class="project-detail" id="project-detail-galaxy" hidden>
-              <dl><div><dt>문제</dt><dd>웨어러블에서 확인한 건강정보가 앱 이용과 상담, 가족의 건강관리로 이어지도록 고객이 이해할 수 있는 서비스 흐름이 필요했습니다.</dd></div><div><dt>담당</dt><dd>DKI 건강코칭센터장으로 보험사·상조 고객 대상 건강코칭 서비스 설계와 총괄 운영, 데이터와 상담·모니터링을 연결하는 프로세스 설계를 수행했습니다.</dd></div><div><dt>구성</dt><dd>삼성헬스와 태양라이프 헬스케어 앱을 연동해 걸음 수·운동·수면·심박수·산소포화도 정보를 확인합니다. 기준 외 측정값 확인 시 간호사가 안부 확인 전화를 하고, 동의·등록한 보호자에게 알림을 제공합니다.</dd></div></dl>
-              <div class="project-tags"><span>워치·앱 데이터 연동</span><span>기준 외 알림</span><span>간호사 안부 확인</span><span>고객 이용 절차</span></div>
-              <img class="brochure-banner" src="./assets/projects/galaxy-banner.png" alt="스마트워치와 함께하는 태양라이프 헬스케어 안내장 표지" loading="lazy">
-              <div class="evidence-gallery"><figure><img src="./assets/projects/galaxy-data.png" alt="건강정보 연동 안내 예시" loading="lazy"><figcaption>삼성헬스 데이터 연동</figcaption></figure><figure><img src="./assets/projects/galaxy-heart.png" alt="워치와 앱에서 심박수를 확인하는 예시" loading="lazy"><figcaption>심박수 측정값 확인</figcaption></figure><figure><img src="./assets/projects/galaxy-caregiver.png" alt="알림을 간호사와 보호자에게 전달하는 안내 예시" loading="lazy"><figcaption>보호자 알림·안부 확인</figcaption></figure></div>
-              <p class="source-note">출처: 태양라이프 갤럭시케어 안내장(2026.06.11). 안내장 예시 화면이며 실제 고객 기록이 아닙니다. 혈압·혈당은 직접 기록한 값에 한해 기준 외 알림을 제공합니다. 측정값과 알림은 건강관리 참고용으로, 질병 감지·진단·치료 또는 응급출동·구조·119 신고 대행 서비스가 아닙니다. 보호자 알림은 동의·등록 시 제공됩니다.</p>
-            </div>
-          </article>
-
-          <article class="project-card reveal project-featured" id="project-soul">
-            <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-soul">
-              <span class="project-kicker"><i>ACCESSIBLE SAFETY / DKI TECHNOLOGY</i><b>02</b></span>
-              <span class="project-visual evidence-visual evidence-soul">
-                <span class="evidence-label">SERVICE CONCEPT · 2026</span>
-                <img class="soul-product" src="./assets/projects/soul-watch.png" alt="손목에 착용한 위험 알림 스마트워치 제안 이미지" loading="lazy" decoding="async">
-                <span class="soul-screen-stack"><img src="./assets/projects/soul-alert.png" alt="화재경보 진동·시각 알림 기획 화면" loading="lazy" decoding="async"><img src="./assets/projects/soul-sos.png" alt="긴급 호출 SOS 기획 화면" loading="lazy" decoding="async"></span>
-                <span class="soul-signal">위험음 인식 · 손목 알림 · 보호자 연계</span>
-              </span>
-              <span class="project-copy"><small>청각장애인 위험 알림 APP ‘소울’</small><strong>손목 위의 24시간<br>안전 파트너</strong><span class="project-impact">소리로 전달되는 위험 신호를 진동과 시각 정보로 전환</span><span>청각장애인의 이용 환경을 기준으로 AI 환경음 감지, 워치 알림, SOS와 보호자 연계를 서비스 제안으로 구체화했습니다.</span></span>
-              <span class="project-meta"><span>서비스 기획 · 프로젝트 PM · 웨어러블 이용 흐름</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
-            </button>
-            <div class="project-detail" id="project-detail-soul" hidden>
-              <dl><div><dt>문제</dt><dd>화재경보·경적·초인종처럼 소리로 전달되는 신호와 스마트폰을 확인하기 어려운 상황에서 위험 인지 공백이 발생합니다.</dd></div><div><dt>담당</dt><dd>청각장애인 위험 알림 APP ‘소울’의 서비스 기획과 PM을 맡았습니다. 위험 시나리오를 알림 방식과 워치 이용 흐름으로 정리했습니다.</dd></div><div><dt>산출물</dt><dd>2026년 서비스 소개서에 환경음 감지, 진동·색상 알림, SOS 문자와 위치 전달, 보호자 연계 기능을 제안했습니다.</dd></div></dl>
-              <div class="project-tags"><span>접근성 요구사항</span><span>알림 시나리오</span><span>워치 화면 기획</span><span>대외 서비스 소개서</span></div>
-              <div class="evidence-gallery watch-gallery"><figure><img src="./assets/projects/soul-pattern.png" alt="화재 신호를 진동 패턴과 색상으로 구분하는 제안 화면" loading="lazy"><figcaption>알림 패턴과 색상 구분</figcaption></figure><figure><img src="./assets/projects/soul-caregiver.png" alt="보호자에게 위험을 알리는 SOS 연계 제안 화면" loading="lazy"><figcaption>보호자 알림 연계</figcaption></figure></div>
-              <p class="source-note">첨부 서비스 소개서(2026.07.13)에서 발췌한 기획 이미지입니다. 제안 기능을 보여주며 출시 여부나 검증된 안전 성능을 뜻하지 않습니다.</p>
-            </div>
-          </article>
-
-          <article class="project-card reveal project-featured" data-delay="1" id="project-b2b">
-            <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-anyfit">
-              <span class="project-kicker"><i>B2B HEALTHCARE / SAMSUNG FIRE</i><b>03</b></span>
-              <span class="project-visual evidence-visual evidence-phones evidence-anyfit">
-                <span class="evidence-label">OFFICIAL SERVICE IMAGES</span>
-                <img class="evidence-shot evidence-main" src="./assets/projects/anyfit-hra.png" alt="삼성화재 애니핏 프로 공식 건강위험분석 소개 화면" loading="lazy" decoding="async">
-                <img class="evidence-shot evidence-secondary" src="./assets/projects/anyfit-program.png" alt="삼성화재 애니핏 프로 공식 만성질환 프로그램 선택 화면" loading="lazy" decoding="async">
-                <img class="evidence-shot evidence-tertiary" src="./assets/projects/anyfit-mission.png" alt="삼성화재 애니핏 프로 공식 건강습관 미션 소개 화면" loading="lazy" decoding="async">
-              </span>
-              <span class="project-copy"><small>기업별 요구를 반영한 임직원 건강관리</small><strong>삼성화재<br>애니핏 프로(PRO)</strong><span class="project-impact">건강관리 앱을 기업 고객의 참여와 지속 관리로 연결</span><span>약 3,000명 이상의 임직원을 대상으로 기업별 프로그램을 운영하고, 참여자 반응과 서비스 이용현황을 운영 개선에 반영했습니다.</span></span>
-              <span class="project-meta"><span>2022.06–2024.05 · B2B 운영 · 운영기획</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
-            </button>
-            <div class="project-detail" id="project-detail-anyfit" hidden>
-              <dl><div><dt>문제</dt><dd>기업마다 다른 임직원 특성과 요구를 반영하면서 건강관리 프로그램의 참여와 지속 이용을 이끌어야 했습니다.</dd></div><div><dt>담당</dt><dd>삼성화재 헬스케어추진파트에서 APP 운영과 운영기획을 맡고, 만성질환·체중비만·마음건강 프로그램 운영과 교육, 서비스 이용현황 분석을 수행했습니다.</dd></div><div><dt>경험</dt><dd>약 3,000명 이상 대상의 B2B 운영 경험을 바탕으로 기업별 안내 방식과 운영 구조를 조정했습니다. 참여자의 반응을 확인하며 프로그램 참여를 유도하는 커뮤니케이션을 보완했습니다.</dd></div></dl>
-              <div class="project-tags"><span>기업 고객 운영</span><span>건강증진 프로그램</span><span>참여자 커뮤니케이션</span><span>이용현황 분석</span></div>
-              <div class="evidence-gallery"><figure><img src="./assets/projects/anyfit-hra.png" alt="공식 서비스 소개의 건강위험분석 예시" loading="lazy"><figcaption>건강위험분석</figcaption></figure><figure><img src="./assets/projects/anyfit-program.png" alt="공식 서비스 소개의 질환별 관리 프로그램 예시" loading="lazy"><figcaption>질환별 프로그램</figcaption></figure><figure><img src="./assets/projects/anyfit-mission.png" alt="공식 서비스 소개의 건강습관 미션 예시" loading="lazy"><figcaption>건강습관 미션</figcaption></figure></div>
-              <p class="source-note">이미지 출처: <a href="https://www.samsungfire.co.kr/vh/page/VH.HPBN0224.do" target="_blank" rel="noopener noreferrer">삼성화재 애니핏 프로 공식 소개 ↗</a> · © 삼성화재. 공식 공개 예시 화면이며 본인이 디자인한 화면이나 실제 고객 기록을 의미하지 않습니다. 담당 업무는 제공한 경력기술서를 기준으로 작성했습니다.</p>
-            </div>
-          </article>
-
-          <article class="project-card reveal" id="project-samsung-health">
-            <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-b2b">
-              <span class="project-kicker"><i>CONNECTED HEALTH</i><b>04</b></span>
-              <span class="project-visual evidence-visual evidence-phones">
-                <span class="evidence-label">ACTUAL WORK SAMPLE</span>
-                <img class="evidence-shot evidence-main" src="./assets/projects/shealth-service.png" alt="" loading="lazy" decoding="async">
-                <img class="evidence-shot evidence-secondary" src="./assets/projects/shealth-dashboard.png" alt="" loading="lazy" decoding="async">
-                <img class="evidence-shot evidence-tertiary" src="./assets/projects/shealth-permissions.png" alt="" loading="lazy" decoding="async">
-              </span>
-              <span class="project-copy"><small>삼성헬스 데이터에서 맞춤 상담까지</small><strong>삼성헬스<br>헬스플러톡</strong><span class="project-impact">분산된 건강 데이터를 상담·리포트·콘텐츠로 연결</span><span>프로젝트 PM과 모바일 앱 기획을 맡아 데이터 연동부터 상담·리포트·콘텐츠까지 이용 흐름과 화면을 구체화했습니다. 개인별 건강관리가 이어지는 서비스 구조를 설계했습니다.</span></span>
-              <span class="project-meta"><span>프로젝트 PM · 모바일 앱 기획 · 서비스 기획</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
-            </button>
-            <div class="project-detail" id="project-detail-b2b" hidden>
-              <dl><div><dt>문제</dt><dd>삼성헬스에 축적된 라이프 데이터를 개인이 활용할 수 있는 건강관리 경험으로 바꿔야 했습니다.</dd></div><div><dt>행동</dt><dd>데이터 연동, 상담, 리포트, 콘텐츠가 이어지는 모바일 서비스 구조와 화면을 기획했습니다.</dd></div><div><dt>결과</dt><dd>측정 데이터를 일대일 맞춤 건강관리로 연결하는 서비스 흐름을 구체화했습니다.</dd></div></dl>
-              <p class="source-note">담당 범위: 프로젝트 PM · 모바일 앱 및 서비스 기획. 아래 화면은 업로드한 포트폴리오의 실제 기획 자료입니다.</p>
-              <div class="evidence-gallery"><figure><img src="./assets/projects/shealth-service.png" alt="삼성헬스 서비스 기획 자료" loading="lazy"><figcaption>서비스 구성</figcaption></figure><figure><img src="./assets/projects/shealth-dashboard.png" alt="데이터 확인 화면 기획" loading="lazy"><figcaption>데이터 확인 화면</figcaption></figure><figure><img src="./assets/projects/shealth-permissions.png" alt="데이터 연동 안내 화면" loading="lazy"><figcaption>데이터 연동 흐름</figcaption></figure></div>
-            </div>
-          </article>
-
-          <article class="project-card reveal" data-delay="1" id="project-sleep">
+<article class="project-card reveal" id="project-sleep">
             <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-sleep">
               <span class="project-kicker"><i>SLEEP SERVICE</i><b>05</b></span>
               <span class="project-visual evidence-visual evidence-sleep">
-                <span class="evidence-label">ACTUAL WORK SAMPLE</span>
-                <img class="evidence-shot evidence-main" src="./assets/projects/sleep-device.png" alt="" loading="lazy" decoding="async">
-                <img class="evidence-shot evidence-secondary" src="./assets/projects/sleep-onboarding.png" alt="" loading="lazy" decoding="async">
-                <img class="evidence-shot evidence-tertiary" src="./assets/projects/sleep-report.png" alt="" loading="lazy" decoding="async">
+                <span class="evidence-label">PROJECT WORK</span>
+                <img class="evidence-shot evidence-main customer-private" src="./assets/projects/sleep-device.png" alt="" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-secondary customer-private" src="./assets/projects/sleep-onboarding.png" alt="" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-tertiary customer-private" src="./assets/projects/sleep-report.png" alt="" loading="lazy" decoding="async">
               </span>
-              <span class="project-copy"><small>센서와 건강 데이터를 행동개선으로</small><strong>삼성헬스 및 슬립센스<br>수면개선 서비스</strong><span class="project-impact">분절된 센서 데이터를 12주 행동개선 여정으로 연결</span><span>앱, 상담, 리포트와 콘텐츠가 이어지는 12주 프로그램의 흐름을 설계했습니다.</span></span>
+              <span class="project-copy"><small>센서와 건강 데이터를 행동개선으로</small><strong>센서·건강 데이터 기반<br>수면개선 서비스</strong><span class="project-impact">분절된 센서 데이터를 12주 행동개선 여정으로 연결</span><span>앱, 상담, 리포트와 콘텐츠가 이어지는 12주 프로그램의 흐름을 설계했습니다.</span></span>
               <span class="project-meta"><span>프로젝트 PM · 앱 기획 · 데이터 기반 건강관리</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
             </button>
             <div class="project-detail" id="project-detail-sleep" hidden>
               <dl><div><dt>문제</dt><dd>수면 센서 데이터를 실제 생활 습관 개선으로 연결해야 했습니다.</dd></div><div><dt>행동</dt><dd>앱의 백엔드와 프론트엔드, 상담, 리포트, 콘텐츠가 이어지는 흐름을 설계했습니다.</dd></div><div><dt>결과</dt><dd>데이터를 기반으로 한 12주 수면습관 개선 프로그램을 기획했습니다.</dd></div></dl>
-              <p class="source-note">담당 범위: 프로젝트 PM · 앱 기획 · 상담·리포트·콘텐츠를 연결하는 프로그램 설계. 삼성헬스 수면서비스 기획 업무혁신상 수상 경험.</p>
-              <div class="evidence-gallery"><figure><img src="./assets/projects/sleep-device.png" alt="수면 서비스 센서 자료" loading="lazy"><figcaption>센서 연계</figcaption></figure><figure><img src="./assets/projects/sleep-onboarding.png" alt="수면 프로그램 이용 흐름" loading="lazy"><figcaption>앱 이용 흐름</figcaption></figure><figure><img src="./assets/projects/sleep-report.png" alt="수면 데이터 리포트" loading="lazy"><figcaption>데이터 리포트</figcaption></figure></div>
+              <div class="evidence-gallery"><figure><img class="customer-private" src="./assets/projects/sleep-device.png" alt="수면 서비스 센서 자료" loading="lazy"><figcaption>센서 연계</figcaption></figure><figure><img class="customer-private" src="./assets/projects/sleep-onboarding.png" alt="수면 프로그램 이용 흐름" loading="lazy"><figcaption>앱 이용 흐름</figcaption></figure><figure><img class="customer-private" src="./assets/projects/sleep-report.png" alt="수면 데이터 리포트" loading="lazy"><figcaption>데이터 리포트</figcaption></figure></div>
             </div>
           </article>
-
-          <article class="project-card reveal" data-delay="1" id="project-senior">
+<article class="project-card reveal" data-delay="1" id="project-samsung-health">
+            <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-b2b">
+              <span class="project-kicker"><i>CONNECTED HEALTH</i><b>04</b></span>
+              <span class="project-visual evidence-visual evidence-phones">
+                <span class="evidence-label">PROJECT WORK</span>
+                <img class="evidence-shot evidence-main customer-private" src="./assets/projects/shealth-service.png" alt="" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-secondary customer-private" src="./assets/projects/shealth-dashboard.png" alt="" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-tertiary customer-private" src="./assets/projects/shealth-permissions.png" alt="" loading="lazy" decoding="async">
+              </span>
+              <span class="project-copy"><small>건강 데이터에서 맞춤 상담까지</small><strong>건강 데이터 연계<br>맞춤 상담 서비스</strong><span class="project-impact">분산된 건강 데이터를 상담·리포트·콘텐츠로 연결</span><span>프로젝트 PM과 모바일 앱 기획을 맡아 데이터 연동부터 상담·리포트·콘텐츠까지 이용 흐름과 화면을 구체화했습니다. 개인별 건강관리가 이어지는 서비스 구조를 설계했습니다.</span></span>
+              <span class="project-meta"><span>프로젝트 PM · 모바일 앱 기획 · 서비스 기획</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
+            </button>
+            <div class="project-detail" id="project-detail-b2b" hidden>
+              <dl><div><dt>문제</dt><dd>건강 데이터 플랫폼에 축적된 라이프 데이터를 개인이 활용할 수 있는 건강관리 경험으로 바꿔야 했습니다.</dd></div><div><dt>행동</dt><dd>데이터 연동, 상담, 리포트, 콘텐츠가 이어지는 모바일 서비스 구조와 화면을 기획했습니다.</dd></div><div><dt>결과</dt><dd>측정 데이터를 일대일 맞춤 건강관리로 연결하는 서비스 흐름을 구체화했습니다.</dd></div></dl>
+              <div class="evidence-gallery"><figure><img class="customer-private" src="./assets/projects/shealth-service.png" alt="건강 데이터 플랫폼 서비스 기획 자료" loading="lazy"><figcaption>서비스 구성</figcaption></figure><figure><img class="customer-private" src="./assets/projects/shealth-dashboard.png" alt="데이터 확인 화면 기획" loading="lazy"><figcaption>데이터 확인 화면</figcaption></figure><figure><img class="customer-private" src="./assets/projects/shealth-permissions.png" alt="데이터 연동 안내 화면" loading="lazy"><figcaption>데이터 연동 흐름</figcaption></figure></div>
+            </div>
+          </article>
+<article class="project-card reveal" id="project-senior">
             <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-senior">
               <span class="project-kicker"><i>PUBLIC HEALTH PILOT</i><b>06</b></span>
               <span class="project-visual evidence-visual evidence-landscape">
-                <span class="evidence-label">ACTUAL WORK SAMPLE</span>
-                <img class="evidence-shot evidence-main" src="./assets/projects/pilot-model.png" alt="" loading="lazy" decoding="async">
-                <img class="evidence-shot evidence-secondary" src="./assets/projects/pilot-service-flow.png" alt="" loading="lazy" decoding="async">
-                <img class="evidence-shot evidence-tertiary" src="./assets/projects/pilot-app-screens.png" alt="" loading="lazy" decoding="async">
+                <span class="evidence-label">PROJECT WORK</span>
+                <img class="evidence-shot evidence-main customer-private" src="./assets/projects/pilot-model.png" alt="" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-secondary customer-private" src="./assets/projects/pilot-service-flow.png" alt="" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-tertiary customer-private" src="./assets/projects/pilot-app-screens.png" alt="" loading="lazy" decoding="async">
               </span>
-              <span class="project-copy"><small>서비스 모델에서 모바일 흐름까지</small><strong>보건산업진흥원<br>헬스케어 실증사업</strong><span class="project-impact">건강 데이터·전문가 상담·콘텐츠를 하나의 서비스 구조로 설계</span><span>서비스 목표와 역할, 전문영역별 관리 구조, 모바일 이용 흐름을 실증 가능한 제안서와 UX 산출물로 구체화했습니다.</span></span>
+              <span class="project-copy"><small>서비스 모델에서 모바일 흐름까지</small><strong>공공 헬스케어<br>실증사업</strong><span class="project-impact">건강 데이터·전문가 상담·콘텐츠를 하나의 서비스 구조로 설계</span><span>서비스 목표와 역할, 전문영역별 관리 구조, 모바일 이용 흐름을 실증 가능한 제안서와 UX 산출물로 구체화했습니다.</span></span>
               <span class="project-meta"><span>서비스 모델 · 제안서 · 공공 실증 설계</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
             </button>
             <div class="project-detail" id="project-detail-senior" hidden>
               <dl><div><dt>문제</dt><dd>건강정보, 콘텐츠, 전문가 개입이 분절되어 개인화된 관리 경험으로 이어지기 어려웠습니다.</dd></div><div><dt>행동</dt><dd>서비스 목표와 채널, 전문가 역할을 정의하고 모바일 화면과 이용 흐름을 제안서로 정리했습니다.</dd></div><div><dt>결과</dt><dd>공공 실증에 적용할 수 있는 데이터 기반 헬스케어 서비스 구조를 구체화했습니다.</dd></div></dl>
-              <div class="evidence-gallery"><figure><img src="./assets/projects/pilot-model.png" alt="실증사업 서비스 모델 기획 자료" loading="lazy"><figcaption>서비스 모델</figcaption></figure><figure><img src="./assets/projects/pilot-service-flow.png" alt="실증사업 서비스 흐름" loading="lazy"><figcaption>서비스 이용 흐름</figcaption></figure><figure><img src="./assets/projects/pilot-app-screens.png" alt="실증사업 앱 화면 자료" loading="lazy"><figcaption>모바일 화면 기획</figcaption></figure></div>
+              <div class="evidence-gallery"><figure><img class="customer-private" src="./assets/projects/pilot-model.png" alt="실증사업 서비스 모델 기획 자료" loading="lazy"><figcaption>서비스 모델</figcaption></figure><figure><img class="customer-private" src="./assets/projects/pilot-service-flow.png" alt="실증사업 서비스 흐름" loading="lazy"><figcaption>서비스 이용 흐름</figcaption></figure><figure><img class="customer-private" src="./assets/projects/pilot-app-screens.png" alt="실증사업 앱 화면 자료" loading="lazy"><figcaption>모바일 화면 기획</figcaption></figure></div>
             </div>
           </article>
-
-          <article class="project-card reveal" data-delay="2" id="project-content">
+<article class="project-card reveal" data-delay="1" id="project-content">
             <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-content">
               <span class="project-kicker"><i>MEDICAL EDITORIAL</i><b>07</b></span>
               <span class="project-visual evidence-visual evidence-editorial">
-                <span class="evidence-label">ACTUAL WORK SAMPLE</span>
-                <img class="evidence-shot evidence-main" src="./assets/projects/content-magazines.png" alt="" loading="lazy" decoding="async">
-                <img class="evidence-shot evidence-secondary" src="./assets/projects/content-exam-book.png" alt="" loading="lazy" decoding="async">
-                <img class="evidence-shot evidence-tertiary" src="./assets/projects/content-healthtalk.png" alt="" loading="lazy" decoding="async">
+                <span class="evidence-label">PROJECT WORK</span>
+                <img class="evidence-shot evidence-main customer-private" src="./assets/projects/content-exam-book.png" alt="간호사 교육 도서 작업 자료" loading="lazy">
+                
+                
               </span>
               <span class="project-copy"><small>대한간호협회 · 의료 교육 도서 출판</small><strong>국가고시 문제집과<br>간호사를 위한 도서</strong><span class="project-impact">의료 전문 지식을 학습과 현장에서 활용할 수 있는 도서로 구성</span><span>대한간호협회 간호연수교육원 소속으로 간호사 국가고시 대비 문제집 및 간호사를 위한 도서의 기획·편집·출판을 담당했습니다.</span></span>
               <span class="project-meta"><span>콘텐츠 기획 · 전문정보 전달 · 편집과 감수</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
             </button>
             <div class="project-detail" id="project-detail-content" hidden>
               <dl><div><dt>소속</dt><dd>대한간호협회 간호연수교육원</dd></div><div><dt>담당</dt><dd>간호사 국가고시 대비 문제집 및 간호사를 위한 도서 기획·편집·출판, 모의고사 기획·운영</dd></div><div><dt>산출물</dt><dd>국가고시 대비 문제집과 교육 교재, 『코로나 영웅, 대한민국을 간호하다』 등 도서의 편집·발간 및 홍보</dd></div></dl>
-              <p class="source-note">전면 이미지는 업로드한 포트폴리오의 의료·건강 콘텐츠 자료를 함께 보여줍니다. 건강 간행물 작업은 미라콤아이앤씨 경력에 해당하며 대한간호협회 도서 출판과 구분됩니다.</p>
             </div>
           </article>
-          <article class="project-card reveal" id="project-smart-senior">
+        </div>
+        <div class="section-heading split execution-heading reveal" id="execution"><div><p class="section-index">03 / LAUNCH &amp; OPERATION</p><h2>설계한 서비스가,<br><em>현장에서 쓰이도록.</em></h2></div><p>제품 출시, 고객 안내와 프로그램 운영까지 맡았습니다.<br>기획 이후의 실행을 이어 온 경험입니다.</p></div>
+        <div class="project-grid">
+<article class="project-card reveal project-featured" id="project-soul">
+            <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-soul">
+              <span class="project-kicker"><i>ACCESSIBLE SAFETY</i><b>02</b></span>
+              <span class="project-visual evidence-visual evidence-soul">
+                <span class="evidence-label">제품 출시 완료 · 시판 준비</span>
+                <img class="soul-product" src="./assets/projects/soul-watch.png" alt="손목에 착용한 위험 알림 스마트워치 제품 이미지" loading="lazy" decoding="async">
+                <span class="soul-screen-stack"><img src="./assets/projects/soul-alert.png" alt="화재경보 진동·시각 알림 기획 화면" loading="lazy" decoding="async"><img src="./assets/projects/soul-sos.png" alt="긴급 호출 SOS 기획 화면" loading="lazy" decoding="async"></span>
+                <span class="soul-signal">위험음 인식 · 손목 알림 · 보호자 연계</span>
+              </span>
+              <span class="project-copy"><small>청각장애인 위험 알림 APP ‘소울’</small><strong>소리를 진동과 시각으로,<br>위험 알림 앱 출시</strong><span class="project-impact">소리로 전달되는 위험 신호를 진동과 시각 정보로 전환</span><span>청각장애인 위험 알림 앱의 서비스 기획과 PM을 맡아 환경음 감지, 워치 알림, SOS와 보호자 연계 기능을 제품으로 구현하는 과정을 이끌었습니다. 제품 출시를 마쳤으며 시판을 준비하고 있습니다.</span></span>
+              <span class="project-meta"><span>서비스 기획 · 프로젝트 PM · 웨어러블 이용 흐름</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
+            </button>
+            <div class="project-detail" id="project-detail-soul" hidden>
+              <dl><div><dt>문제</dt><dd>화재경보·경적·초인종처럼 소리로 전달되는 신호와 스마트폰을 확인하기 어려운 상황에서 위험 인지 공백이 발생합니다.</dd></div><div><dt>담당</dt><dd>청각장애인 위험 알림 APP ‘소울’의 서비스 기획과 PM을 맡았습니다. 위험 시나리오를 알림 방식과 워치 이용 흐름으로 정리했습니다.</dd></div><div><dt>출시 단계</dt><dd>환경음 감지, 진동·색상 알림, SOS 문자·위치 전달과 보호자 연계 기능의 서비스 기획 및 PM을 수행했습니다. 제품 출시를 완료했으며 현재 시판 준비 단계입니다.</dd></div></dl>
+              <div class="project-tags"><span>접근성 요구사항</span><span>알림 시나리오</span><span>워치 화면 기획</span><span>대외 서비스 소개서</span></div>
+              <div class="evidence-gallery watch-gallery"><figure><img src="./assets/projects/soul-pattern.png" alt="화재 신호를 진동 패턴과 색상으로 구분하는 서비스 화면" loading="lazy"><figcaption>알림 패턴과 색상 구분</figcaption></figure><figure><img src="./assets/projects/soul-caregiver.png" alt="보호자에게 위험을 알리는 SOS 연계 서비스 화면" loading="lazy"><figcaption>보호자 알림 연계</figcaption></figure></div>
+            </div>
+          </article>
+<article class="project-card reveal project-featured" data-delay="1" id="project-galaxy">
+            <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-galaxy">
+              <span class="project-kicker"><i>CONNECTED CARE</i><b>01</b></span>
+              <span class="project-visual evidence-visual evidence-phones evidence-galaxy">
+                <span class="evidence-label">웨어러블 연계 · 고객사 비공개</span><img class="phones-clean" src="./assets/projects/phones-clean.png" alt="고객사 식별 정보를 가린 건강 데이터·심박수·보호자 연계 화면" loading="lazy">
+                
+                
+                
+              </span>
+              <span class="project-copy"><small>웨어러블 연계 건강코칭</small><strong>갤럭시워치 데이터와<br>간호사 안부 확인</strong><span class="project-impact">웨어러블의 건강정보를 고객의 일상 관리와 상담으로 연결</span><span>보험사·상조 고객 대상 건강코칭 서비스를 설계하고 총괄 운영했습니다. 워치 데이터 확인과 상담·모니터링, 간호사 안부 확인을 하나의 운영 흐름으로 연결했습니다.</span></span>
+              <span class="project-meta"><span>건강코칭 서비스 설계 · 운영 · 고객 안내</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
+            </button>
+            <div class="project-detail" id="project-detail-galaxy" hidden>
+              <dl><div><dt>문제</dt><dd>웨어러블에서 확인한 건강정보가 앱 이용과 상담, 가족의 건강관리로 이어지도록 고객이 이해할 수 있는 서비스 흐름이 필요했습니다.</dd></div><div><dt>담당</dt><dd>DKI 건강코칭센터장으로 보험사·상조 고객 대상 건강코칭 서비스 설계와 총괄 운영, 데이터와 상담·모니터링을 연결하는 프로세스 설계를 수행했습니다.</dd></div><div><dt>구성</dt><dd>건강 데이터 플랫폼과 건강관리 앱을 연동해 걸음 수·운동·수면·심박수·산소포화도 정보를 확인합니다. 기준 외 측정값 확인 시 간호사가 안부 확인 전화를 하고, 동의·등록한 보호자에게 알림을 제공합니다.</dd></div></dl>
+              <div class="project-tags"><span>워치·앱 데이터 연동</span><span>기준 외 알림</span><span>간호사 안부 확인</span><span>고객 이용 절차</span></div>
+              <div class="product-banner"><div><small>WEARABLE CONNECTED CARE</small><h3>건강 데이터에서<br>상담과 안부 확인까지.</h3><p>서비스 설계 · 건강코칭 총괄 운영</p></div><img src="./assets/projects/watches-clean.png" alt="배경을 정리한 두 대의 스마트워치" loading="lazy"></div>
+              <figure class="anonymized-gallery"><img src="./assets/projects/phones-clean.png" alt="고객사 비공개 처리한 건강정보 확인과 보호자 연계 화면" loading="lazy"><figcaption>건강정보 확인 · 심박수 측정값 · 보호자 알림과 간호사 안부 확인</figcaption></figure>
+            </div>
+          </article>
+<article class="project-card reveal project-featured" id="project-b2b">
+            <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-anyfit">
+              <span class="project-kicker"><i>B2B HEALTHCARE</i><b>03</b></span>
+              <span class="project-visual evidence-visual evidence-phones evidence-anyfit">
+                <span class="evidence-label">PROGRAM EXPERIENCE</span>
+                <img class="evidence-shot evidence-main customer-private" src="./assets/projects/anyfit-hra.png" alt="기업 임직원 건강관리 건강위험분석 소개 화면" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-secondary customer-private" src="./assets/projects/anyfit-program.png" alt="기업 임직원 건강관리 만성질환 프로그램 선택 화면" loading="lazy" decoding="async">
+                <img class="evidence-shot evidence-tertiary customer-private" src="./assets/projects/anyfit-mission.png" alt="기업 임직원 건강관리 건강습관 미션 소개 화면" loading="lazy" decoding="async">
+              </span>
+              <span class="project-copy"><small>기업별 요구를 반영한 임직원 건강관리</small><strong>기업 임직원<br>건강관리 프로그램</strong><span class="project-impact">건강관리 앱을 기업 고객의 참여와 지속 관리로 연결</span><span>약 3,000명 이상의 임직원을 대상으로 기업별 프로그램을 운영하고, 참여자 반응과 서비스 이용현황을 운영 개선에 반영했습니다.</span></span>
+              <span class="project-meta"><span>2022.06–2024.05 · B2B 운영 · 운영기획</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
+            </button>
+            <div class="project-detail" id="project-detail-anyfit" hidden>
+              <dl><div><dt>문제</dt><dd>기업마다 다른 임직원 특성과 요구를 반영하면서 건강관리 프로그램의 참여와 지속 이용을 이끌어야 했습니다.</dd></div><div><dt>담당</dt><dd>삼성화재 헬스케어추진파트에서 APP 운영과 운영기획을 맡고, 만성질환·체중비만·마음건강 프로그램 운영과 교육, 서비스 이용현황 분석을 수행했습니다.</dd></div><div><dt>경험</dt><dd>약 3,000명 이상 대상의 B2B 운영 경험을 바탕으로 기업별 안내 방식과 운영 구조를 조정했습니다. 참여자의 반응을 확인하며 프로그램 참여를 유도하는 커뮤니케이션을 보완했습니다.</dd></div></dl>
+              <div class="project-tags"><span>기업 고객 운영</span><span>건강증진 프로그램</span><span>참여자 커뮤니케이션</span><span>이용현황 분석</span></div>
+              <div class="evidence-gallery"><figure><img class="customer-private" src="./assets/projects/anyfit-hra.png" alt="건강관리 프로그램의 건강위험분석 예시" loading="lazy"><figcaption>건강위험분석</figcaption></figure><figure><img class="customer-private" src="./assets/projects/anyfit-program.png" alt="건강관리 프로그램의 질환별 관리 프로그램 예시" loading="lazy"><figcaption>질환별 프로그램</figcaption></figure><figure><img class="customer-private" src="./assets/projects/anyfit-mission.png" alt="건강관리 프로그램의 건강습관 미션 예시" loading="lazy"><figcaption>건강습관 미션</figcaption></figure></div>
+            </div>
+          </article>
+<article class="project-card reveal" data-delay="1" id="project-smart-senior">
             <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-smart-senior">
-              <span class="project-kicker"><i>PUBLIC PROGRAM / DKI TECHNOLOGY</i><b>08</b></span>
+              <span class="project-kicker"><i>PUBLIC HEALTH OPERATION</i><b>08</b></span>
               <span class="project-visual visual-business"><span class="evidence-label">BUSINESS PLANNING &amp; OPERATION</span><span class="business-flow"><b>사업 기획</b><span>건강 실증</span><span>지속 운영·관리</span></span></span>
               <span class="project-copy"><small>디케이아이테크놀로지 · 현재 수행</small><strong>스마트경로당<br>건강 실증사업</strong><span class="project-impact">측정에서 상담과 지속 관리로 이어지는 현장 운영</span><span>스마트경로당 사업을 기획하고 건강 실증사업의 지속 운영·관리를 담당합니다. 건강데이터와 비대면 상담을 연결하고 현장 이용 과정의 문제를 운영 개선으로 구체화합니다.</span></span>
               <span class="project-meta"><span>사업 기획 · 실증 운영 · 건강코칭</span><span class="project-action"><span>상세 보기 ↗</span><i aria-hidden="true">＋</i></span></span>
             </button>
-            <div class="project-detail" id="project-detail-smart-senior" hidden><dl><div><dt>소속</dt><dd>디케이아이테크놀로지 건강코칭센터</dd></div><div><dt>담당</dt><dd>스마트경로당 사업 기획 및 건강 실증사업 지속 운영·관리</dd></div><div><dt>수행</dt><dd>건강데이터 측정·상담·후속 관리의 운영 흐름 설계, 비대면 건강코칭 운영, 이용 과정의 현장 이슈 대응 및 운영 방식 보완</dd></div><div><dt>역량</dt><dd>RFP 작성과 공공사업 참여 경험을 갖추고 있으며, 기획한 서비스가 현장에서 지속 이용되도록 운영합니다.</dd></div></dl><p class="source-note">서비스 흐름을 설명하는 그래픽입니다. 실제 사업 화면이나 정량 성과를 재현한 이미지가 아닙니다.</p></div>
+            <div class="project-detail" id="project-detail-smart-senior" hidden><dl><div><dt>소속</dt><dd>디케이아이테크놀로지 건강코칭센터</dd></div><div><dt>담당</dt><dd>스마트경로당 사업 기획 및 건강 실증사업 지속 운영·관리</dd></div><div><dt>수행</dt><dd>건강데이터 측정·상담·후속 관리의 운영 흐름 설계, 비대면 건강코칭 운영, 이용 과정의 현장 이슈 대응 및 운영 방식 보완</dd></div><div><dt>역량</dt><dd>RFP 작성과 공공사업 참여 경험을 갖추고 있으며, 기획한 서비스가 현장에서 지속 이용되도록 운영합니다.</dd></div></dl></div>
+          </article>
+<article class="project-card reveal crm-card" id="project-crm">
+            <button class="project-trigger" type="button" aria-expanded="false" aria-controls="project-detail-crm">
+              <span class="project-kicker"><i>OPERATION DESIGN / SAMPLE</i><b>09</b></span>
+              <span class="project-visual crm-preview"><span class="evidence-label">성과관리 CRM · 예시 화면</span><span class="crm-window"><span class="crm-toolbar">운영 성과 관리 <i>고객정보 비공개</i></span><span class="crm-metrics"><span>참여 현황<b>참여 → 이용</b></span><span>상담 후속 관리<b>확인 → 대응</b></span><span>개선 과제<b>피드백 → 실행</b></span></span><span class="crm-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="crm-private" aria-hidden="true"><i>고객 정보</i><i>담당자 정보</i><i>상담 내용</i></span></span></span>
+              <span class="project-copy"><small>운영 데이터를 다음 실행으로 연결하는 구조</small><strong>성과관리 CRM<br>대시보드 설계 예시</strong><span class="project-impact">현황 확인에서 후속 대응과 개선 과제까지</span><span>고객 운영 경험을 바탕으로 참여·이용 현황, 상담 후속 관리, 개선 과제를 한 화면에서 확인하도록 구성한 예시입니다.</span></span>
+              <span class="project-meta"><span>새로 구성한 예시 · 실제 고객 데이터 및 운영 실적 아님</span><span class="project-action"><span>구조 살펴보기 ↗</span><i aria-hidden="true">＋</i></span></span>
+            </button>
+            <div class="project-detail" id="project-detail-crm" hidden><dl><div><dt>목적</dt><dd>운영 현황을 확인한 뒤 담당자·후속 조치·개선 과제가 연결되도록 성과관리 구조를 설명합니다.</dd></div><div><dt>구성</dt><dd>참여와 지속 이용 현황, 상담 후속 관리 상태, 고객 피드백과 개선 과제의 담당·진행 상태를 함께 확인합니다.</dd></div><div><dt>활용</dt><dd>상태별 후속 대응과 운영 점검에 사용할 수 있는 설계 예시입니다. 실제 납품 화면이나 달성 성과를 의미하지 않습니다.</dd></div></dl><div class="crm-table-wrap"><table class="crm-table"><caption>후속 관리 구조 · 가상 예시</caption><thead><tr><th>관리 항목</th><th>확인 내용</th><th>후속 실행</th></tr></thead><tbody><tr><td>참여·이용 현황</td><td>참여 이후 이용 흐름</td><td>안내 방식 점검</td></tr><tr><td>상담 후속 관리</td><td>후속 확인 상태</td><td>담당자 대응·기록</td></tr><tr><td>고객 피드백</td><td>반복되는 이용 불편</td><td>개선 과제·진행 확인</td></tr></tbody></table></div></div>
           </article>
         </div>
       </div>
     </section>
 
+    <section class="workflow section-pad" aria-labelledby="workflow-title">
+      <div class="container">
+        <div class="section-heading compact reveal">
+          <p class="section-index">HOW THE EXPERIENCE CONNECTS</p>
+          <h2 id="workflow-title">이 경험들은,<br><em>하나의 실행 방식</em>으로 이어집니다.</h2>
+        </div>
+        <div class="workflow-shell reveal">
+          <div class="workflow-tabs" role="tablist" aria-label="업무 방식 단계">
+            <button type="button" role="tab" id="workflow-tab-0" aria-controls="workflow-panel" aria-selected="true" data-step="0" data-preview="임상과 고객 운영 경험으로 사용 환경을 파악했습니다."><span>01</span><b>현장과<br>고객 이해</b></button>
+            <button type="button" role="tab" id="workflow-tab-1" aria-controls="workflow-panel" aria-selected="false" data-step="1" data-preview="이용 환경의 문제를 알림 시나리오로 정리했습니다." tabindex="-1"><span>02</span><b>문제<br>구조화</b></button>
+            <button type="button" role="tab" id="workflow-tab-2" aria-controls="workflow-panel" aria-selected="false" data-step="2" data-preview="서비스 모델과 모바일 흐름을 설계했습니다." tabindex="-1"><span>03</span><b>서비스와<br>제안 설계</b></button>
+            <button type="button" role="tab" id="workflow-tab-3" aria-controls="workflow-panel" aria-selected="false" data-step="3" data-preview="기획과 PM 경험을 통해 관계자 업무를 조율했습니다." tabindex="-1"><span>04</span><b>관계자<br>협업</b></button>
+            <button type="button" role="tab" id="workflow-tab-4" aria-controls="workflow-panel" aria-selected="false" data-step="4" data-preview="기업별 프로그램 운영·교육·이용현황 분석을 수행했습니다." tabindex="-1"><span>05</span><b>실행과<br>운영</b></button>
+            <button type="button" role="tab" id="workflow-tab-5" aria-controls="workflow-panel" aria-selected="false" data-step="5" data-preview="이용현황과 참여자 반응을 운영 개선에 반영했습니다." tabindex="-1"><span>06</span><b>데이터 기반<br>개선</b></button>
+          </div>
+          <div class="workflow-panel" id="workflow-panel" role="tabpanel" tabindex="0" aria-labelledby="workflow-tab-0" aria-live="polite">
+            <div class="workflow-panel-copy"><span class="panel-number">01</span><div><p><b>현장과 고객 이해</b><br><span data-workflow-description>임상과 기업 고객 운영 경험을 바탕으로 업무 맥락과 실제 사용 환경을 파악해 왔습니다.</span></p><ul class="deliverable-tags" data-workflow-deliverables aria-label="주요 산출물"><li>현장 VOC 분석서</li></ul></div></div>
+            <a href="#project-b2b" data-workflow-link>B2B 건강관리 운영 · 현장 요구 반영 ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="awards section-pad" id="awards" aria-labelledby="awards-title"><div class="container">
+      <div class="section-heading split reveal"><div><p class="section-index">04 / RECOGNITION</p><h2 id="awards-title">간호에서 출발한 전문성,<br><em>데이터와 서비스 분야의 수상으로.</em></h2></div><p>임상 경력에 서비스 기획과 데이터 활용 경험을 더했습니다. 수상 이름과 함께, 직접 맡아 수행한 일을 보여드립니다.</p></div>
+      <div class="award-grid">
+        <article class="award-feature reveal"><div class="award-heading"><span class="award-year">2022</span><span class="award-type">국회 데이터 활용 경진대회</span></div><p class="award-level">국회의장상</p><h3>대상</h3><p class="award-context">간호에서 시작한 경력이<br>데이터 활용 분야의 수상으로 이어졌습니다.</p><div class="award-foot">DATA UTILIZATION · 2022.12</div></article>
+        <article class="project-card award-card reveal" data-delay="1" id="award-mydata"><button class="project-trigger" type="button" aria-expanded="false" aria-controls="award-detail-mydata"><span class="award-heading"><span class="award-year">2025</span><span class="award-type">마이데이터 컨설팅 지원 사업 성과공유회</span></span><span class="award-card-body"><small>한국데이터산업진흥원</small><strong>원장상</strong><span class="award-role">수상 과제 주도 수행</span><span>마이데이터 기반 건강관리 서비스 설계와<br>데이터 활용 전략 수립</span></span><span class="project-meta"><span>주도한 업무와 서비스 설계</span><span class="project-action"><span>수행 내용 펼쳐보기 ↗</span><i aria-hidden="true">＋</i></span></span></button><div class="project-detail" id="award-detail-mydata" hidden><dl><div><dt>수상</dt><dd>2025년 12월 마이데이터 컨설팅 지원 사업 성과공유회 한국데이터산업진흥원 원장상</dd></div><div><dt>역할</dt><dd>수상 과제를 주도 수행했습니다.</dd></div><div><dt>수행</dt><dd>마이데이터 기반 건강관리 서비스 설계와 데이터 활용 전략 수립을 담당했습니다.</dd></div></dl></div></article>
+        <article class="project-card award-card award-service reveal"><button class="project-trigger" type="button" aria-expanded="false" aria-controls="award-detail-sleep"><span class="award-heading"><span class="award-year">2016</span><span class="award-type">삼성헬스 수면서비스 기획</span></span><span class="award-card-body"><small>서비스 기획 분야</small><strong>업무혁신상</strong><span class="award-role">수면관리 앱 프로젝트 PM</span><span>수면 데이터를 앱·상담·리포트·콘텐츠로 연결한 서비스 기획</span></span><span class="project-meta"><span>기획과 PM 수행 경험</span><span class="project-action"><span>수행 내용 펼쳐보기 ↗</span><i aria-hidden="true">＋</i></span></span></button><div class="project-detail" id="award-detail-sleep" hidden><dl><div><dt>수상</dt><dd>2016년 12월 삼성헬스 수면서비스 기획 업무혁신상</dd></div><div><dt>역할</dt><dd>데이터 기반 수면관리 앱 프로젝트 PM을 맡았습니다.</dd></div><div><dt>설계</dt><dd>앱, 상담, 리포트와 콘텐츠가 이어지는 12주 수면습관 개선 프로그램의 이용 흐름을 설계했습니다.</dd></div></dl><a class="award-project-link" href="#project-sleep">수면개선 서비스에서 실제 기획 과정 보기 ↗</a></div></article>
+      </div><a class="chapter-next" href="#qlogic"><span>다음 이야기</span><b>이 경험을 큐로직에서는 어떻게 적용할까요?</b><i aria-hidden="true">→</i></a>
+    </div></section>
     <section class="qlogic section-pad" id="qlogic" aria-labelledby="qlogic-title">
       <div class="qlogic-grid" aria-hidden="true"></div>
       <div class="container">
         <div class="section-heading light split reveal">
-          <div><p class="section-index">04 / WHY QLOGIC</p><h2 id="qlogic-title">병원과 공급사를 연결하는 일에,<br><em>사업 기획과 운영 경험</em>을 더하겠습니다.</h2></div>
-          <p>의료 현장 경험과 서비스 기획, 데이터 기반 운영 역량을 구매·물류 플랫폼의 고객 가치로 연결합니다.</p>
+          <div><p class="section-index">05 / THE NEXT CHAPTER</p><h2 id="qlogic-title">다음 무대는 큐로직.<br><em>현장 이해를 도입과 운영으로.</em></h2></div>
+          <p>이미 수행해 온 역량을 바탕으로, 입사 후 병원 고객의 요구 파악과 제안·도입·운영 업무에 적용하겠습니다.</p>
         </div>
-        <div class="qlogic-cards">
-          <article class="q-card reveal"><p><span>01</span> LISTEN</p><div class="q-icon" aria-hidden="true"><i></i><i></i><i></i></div><h3>병원 사용부서와<br>구매 담당자의 요구 파악</h3><p>의료 현장 경험을 활용해 제품의 사용 맥락과 실제 불편을 이해합니다.</p><footer>MEDICAL FIELD</footer></article>
-          <article class="q-card reveal" data-delay="1"><p><span>02</span> DESIGN</p><div class="q-icon blueprint" aria-hidden="true"><i></i><i></i><i></i></div><h3>고객별 제안과<br>도입 설계</h3><p>서비스 기획과 제안서 경험을 활용해 병원 유형별 설명과 제안 구조를 만듭니다.</p><footer>SOLUTION SALES</footer></article>
-          <article class="q-card reveal" data-delay="2"><p><span>03</span> IMPROVE</p><div class="q-icon bars" aria-hidden="true"><i></i><i></i><i></i></div><h3>사용량·재고·주문 데이터<br>기반 개선</h3><p>데이터 기반 건강관리 운영 경험을 활용해 현장 피드백을 운영 개선 과제로 연결합니다.</p><footer>DATA OPERATION</footer></article>
-        </div>
-
-        <div class="plan reveal">
-          <div class="plan-label"><p><b>BUSINESS MANAGEMENT</b><br>사업관리 역량과 기여 방향</p></div>
-          <ol>
-            <li><span>PLANNING</span><b>사업 기획</b><p>RFP 작성과 공공사업 참여 경험을 바탕으로 요구사항을 실행 가능한 서비스와 운영 과제로 정리합니다.</p></li>
-            <li><span>OPERATION</span><b>실증 운영</b><p>스마트경로당 건강 실증사업을 기획하고 지속 운영·관리하며 현장 이용 과정의 문제를 보완합니다.</p></li>
-            <li><span>CONTRIBUTION</span><b>업무에 맞춘 기여</b><p>담당 업무와 사업 상황에 맞춰 고객 요구 파악, 도입 지원, 관계자 협업과 운영 개선에 기여하겠습니다.</p></li>
-          </ol>
+        <div class="skill-connection reveal">
+          <p class="skill-prompt">보유 역량을 선택하면 큐로직에서의 적용 방향이 펼쳐집니다.</p>
+          <div class="skill-keywords" role="group" aria-label="보유 역량 선택">
+            <button type="button" data-skill="0" aria-pressed="true">의료 현장 이해</button>
+            <button type="button" data-skill="1" aria-pressed="false">서비스 기획</button>
+            <button type="button" data-skill="2" aria-pressed="false">제안서 · RFP</button>
+            <button type="button" data-skill="3" aria-pressed="false">B2B 고객 운영</button>
+            <button type="button" data-skill="4" aria-pressed="false">데이터 기반 개선</button>
+            <button type="button" data-skill="5" aria-pressed="false">프로젝트 PM</button>
+          </div>
+          <div class="skill-result" aria-live="polite">
+            <div class="skill-evidence"><small>제가 쌓아 온 경험</small><h3 data-skill-title>의료 현장 이해</h3><p data-skill-evidence>외과계 중환자실 간호를 통해 의료진의 용어와 환자 관리, 병원 업무 흐름을 익혔습니다.</p></div>
+            <span class="skill-arrow" aria-hidden="true">→</span>
+            <div class="skill-application"><small>입사 후 큐로직에서</small><h3 data-skill-application>사용부서의 요구를 도입 조건으로</h3><p data-skill-plan>병원 사용부서와 구매 담당자의 요구를 구분하고, 실제 사용 환경을 반영한 제품 설명과 도입 제안을 준비하겠습니다.</p></div>
+          </div>
         </div>
       </div>
     </section>
@@ -339,7 +358,7 @@
     <section class="career section-pad" id="career" aria-labelledby="career-title">
       <div class="container">
         <div class="section-heading split reveal">
-          <div><p class="section-index">05 / EXPERIENCE</p><h2 id="career-title">의료에서 디지털로,<br><em>기획에서 운영</em>으로.</h2></div>
+          <div><p class="section-index">CAREER / THE FULL JOURNEY</p><h2 id="career-title">의료에서 디지털로,<br><em>기획에서 운영</em>으로.</h2></div>
           <p>현장 전문성, 서비스 설계, 고객 운영을 단계적으로 확장해 온 경력입니다.</p>
         </div>
         <div class="career-shell reveal">
@@ -353,15 +372,7 @@
           </ol>
         </div>
 
-        <div class="expertise reveal">
-          <div><p class="section-index">AWARDS &amp; CREDENTIALS</p><h3>수상 및 전문성</h3></div>
-          <ul>
-            <li><span class="award-emblem" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M10 3h12v10a6 6 0 0 1-12 0V3Z"/><path d="M10 6H5v3a6 6 0 0 0 6 6M22 6h5v3a6 6 0 0 1-6 6M16 19v5M11 28h10M12 24h8"/></svg></span><span class="award-copy"><span>2025</span><b>마이데이터 컨설팅 지원 사업 진흥원장상</b></span></li>
-            <li><span class="award-emblem" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><circle cx="16" cy="13" r="9"/><path d="m12 21-2 8 6-3 6 3-2-8M13 13l2 2 4-5"/></svg></span><span class="award-copy"><span>2022</span><b>국회 데이터 활용 경진대회 국회의장상</b></span></li>
-            <li><span class="award-emblem" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M16 3l3.3 6.7 7.4 1.1-5.4 5.2 1.3 7.4-6.6-3.5-6.6 3.5 1.3-7.4-5.4-5.2 7.4-1.1L16 3Z"/></svg></span><span class="award-copy"><span>2016</span><b>삼성헬스 수면서비스 기획 업무혁신상</b></span></li>
-            <li><span class="award-emblem license" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M16 3 27 7v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14V7l11-4Z"/><path d="m11 16 3 3 7-8"/></svg></span><span class="award-copy"><span>LICENSE</span><b>간호사 면허 · 보건교사 2급</b></span></li>
-          </ul>
-        </div>
+        <div class="credentials reveal"><p class="section-index">CLINICAL CREDENTIALS</p><h3>전문성의 출발점</h3><p>간호사 면허 · 보건교사 2급</p></div>
       </div>
     </section>
 
