@@ -183,10 +183,12 @@ const skillResult=document.querySelector('.skill-result');
 function selectSkill(index){
  const data=skillOptions[index];if(!data||!skillResult)return;
  skillButtons.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
+ const proof=document.querySelector('[data-skill-proof]');if(proof){proof.href=skillProofs[index];proof.textContent=index===4?'대시보드 설계 예시 보기 ↗':'관련 수행 경험 보기 ↗';}
  ['title','evidence','application','plan'].forEach((name,i)=>{document.querySelector('[data-skill-'+name+']').textContent=data[i];});
  skillResult.classList.remove('is-switching');
  if(!reducedMotion){void skillResult.offsetWidth;skillResult.classList.add('is-switching');}
 }
+const skillProofs=['#capabilities','#project-sleep','#project-senior','#project-b2b','#project-crm','#project-soul'];
 skillButtons.forEach(button=>button.addEventListener('click',()=>selectSkill(Number(button.dataset.skill))));
 selectWorkflow(0);
 
@@ -209,3 +211,9 @@ selectWorkflow(0);
  document.addEventListener('visibilitychange',()=>document.hidden?stop():start());window.addEventListener('portfolio-motion-change',()=>{stop();draw(performance.now());start();});canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();stop();stage.classList.remove('has-service-3d');});
 })();
 
+
+// Bring linked evidence into view and open its full account.
+document.querySelectorAll('a[href^="#project-"]').forEach(link=>link.addEventListener('click',()=>{const card=document.querySelector(link.getAttribute('href'));if(!card)return;const trigger=card.querySelector('.project-trigger'),detail=card.querySelector('.project-detail');if(trigger&&detail){trigger.setAttribute('aria-expanded','true');detail.hidden=false;trigger.querySelector('.project-action span').textContent='상세 닫기';}document.querySelectorAll('.project-card.is-linked').forEach(c=>c.classList.remove('is-linked'));card.classList.add('is-linked');}));
+document.querySelectorAll('.project-trigger[aria-expanded="true"] .project-action span').forEach(label=>label.textContent='상세 닫기');
+
+function revealLinkedProject(){if(!location.hash.startsWith('#project-'))return;const card=document.getElementById(location.hash.slice(1));if(!card)return;const trigger=card.querySelector('.project-trigger'),detail=card.querySelector('.project-detail');if(trigger&&detail){trigger.setAttribute('aria-expanded','true');detail.hidden=false;trigger.querySelector('.project-action span').textContent='상세 닫기';}card.classList.add('is-linked');}revealLinkedProject();window.addEventListener('hashchange',revealLinkedProject);
