@@ -91,6 +91,10 @@ if (finePointer && !reducedMotion) {
 }
 
 document.querySelectorAll('.project-trigger').forEach((trigger) => {
+  trigger.setAttribute('aria-expanded', 'false');
+  document.getElementById(trigger.getAttribute('aria-controls')).hidden = true;
+  const initialLabel = trigger.querySelector('.project-action span');
+  if (initialLabel) initialLabel.textContent = '상세 보기 ↗';
   trigger.addEventListener('click', () => {
     const detail = document.getElementById(trigger.getAttribute('aria-controls'));
     const actionLabel = trigger.querySelector('.project-action span');
@@ -216,4 +220,4 @@ selectWorkflow(0);
 document.querySelectorAll('a[href^="#project-"]').forEach(link=>link.addEventListener('click',()=>{const card=document.querySelector(link.getAttribute('href'));if(!card)return;const trigger=card.querySelector('.project-trigger'),detail=card.querySelector('.project-detail');if(trigger&&detail){trigger.setAttribute('aria-expanded','true');detail.hidden=false;trigger.querySelector('.project-action span').textContent='상세 닫기';}document.querySelectorAll('.project-card.is-linked').forEach(c=>c.classList.remove('is-linked'));card.classList.add('is-linked');}));
 document.querySelectorAll('.project-trigger[aria-expanded="true"] .project-action span').forEach(label=>label.textContent='상세 닫기');
 
-function revealLinkedProject(){if(!location.hash.startsWith('#project-'))return;const card=document.getElementById(location.hash.slice(1));if(!card)return;const trigger=card.querySelector('.project-trigger'),detail=card.querySelector('.project-detail');if(trigger&&detail){trigger.setAttribute('aria-expanded','true');detail.hidden=false;trigger.querySelector('.project-action span').textContent='상세 닫기';}card.classList.add('is-linked');}revealLinkedProject();window.addEventListener('hashchange',revealLinkedProject);
+function revealLinkedProject(){if(!location.hash.startsWith('#project-'))return;const card=document.getElementById(location.hash.slice(1));if(!card)return;const trigger=card.querySelector('.project-trigger'),detail=card.querySelector('.project-detail');if(trigger&&detail){trigger.setAttribute('aria-expanded','true');detail.hidden=false;trigger.querySelector('.project-action span').textContent='상세 닫기';}card.classList.add('is-linked');}window.addEventListener('hashchange',revealLinkedProject);
