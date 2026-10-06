@@ -190,44 +190,22 @@ function selectSkill(index){
 skillButtons.forEach(button=>button.addEventListener('click',()=>selectSkill(Number(button.dataset.skill))));
 selectWorkflow(0);
 
-// An actual lit 3D service object; SVG remains available if WebGL is unavailable.
+// A luminous spatial network connects clinical, design and operational experience.
 (function initServiceObject(){
  const canvas=document.querySelector('[data-service-3d]'),stage=document.querySelector('[data-hero-stage]');
  if(!canvas||!window.THREE||navigator.connection?.saveData)return;
- const T=window.THREE;let renderer;
- try{renderer=new T.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});}catch{return;}
- renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.outputEncoding=T.sRGBEncoding;renderer.toneMapping=T.ACESFilmicToneMapping;
- const scene=new T.Scene(),camera=new T.PerspectiveCamera(34,1,.1,30);camera.position.set(3.5,2.8,5.5);camera.lookAt(0,0,0);
- scene.add(new T.HemisphereLight(0xc2fff2,0x10253c,1.1));
- const key=new T.DirectionalLight(0xffffff,2);key.position.set(-3,5,4);scene.add(key);
- const rim=new T.PointLight(0x40e5c6,2,12);rim.position.set(2,1,-2);scene.add(rim);
+ const T=window.THREE;let renderer;try{renderer=new T.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});}catch{return;}
+ renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));const scene=new T.Scene(),camera=new T.PerspectiveCamera(34,1,.1,30);camera.position.set(0,.15,5);camera.lookAt(0,0,0);
  const group=new T.Group();scene.add(group);
-
- const material=new T.MeshPhysicalMaterial({color:0x2e7080,metalness:.3,roughness:.28,clearcoat:1});
- const white=new T.MeshStandardMaterial({color:0xc9e9e9,metalness:.15,roughness:.32});
- const accent=new T.MeshStandardMaterial({color:0x98f6d4,emissive:0x2a9477,emissiveIntensity:.45});
- function box(w,h,d,x,y,z,mat=material){const mesh=new T.Mesh(new T.BoxGeometry(w,h,d),mat);mesh.position.set(x,y,z);group.add(mesh);return mesh;}
- // Hospital silhouette anchors the purchasing and logistics network.
- box(.86,1.5,.6,0,.12,0,white);box(.55,.95,.58,-.66,-.15,0);box(.55,.95,.58,.66,-.15,0);
- box(.31,.065,.025,0,.57,.315,accent);box(.065,.31,.025,0,.57,.315,accent);
- for(let row=0;row<2;row++)for(let col=0;col<2;col++)box(.13,.15,.022,-.2+col*.4,.14-row*.3,.316,material);
- box(.24,.32,.025,0,-.46,.32,material);
- for(const x of [-.68,.68])for(let y=0;y<2;y++)box(.16,.14,.025,x,-.1-y*.28,.31,white);
- const platform=new T.Mesh(new T.CylinderGeometry(1.65,1.65,.11,64),new T.MeshPhysicalMaterial({color:0x175469,metalness:.55,roughness:.25}));platform.position.y=-.9;group.add(platform);
- const orbit=new T.Mesh(new T.TorusGeometry(1.42,.018,8,80),accent);orbit.rotation.x=Math.PI/2;orbit.position.y=-.82;group.add(orbit);
- const satellites=[];
- for(let i=0;i<3;i++){const angle=i*Math.PI*2/3+.4;const node=new T.Group();node.position.set(Math.cos(angle)*1.4,-.58,Math.sin(angle)*1.4);group.add(node);
- const sphere=new T.Mesh(new T.SphereGeometry(.16,20,16),new T.MeshStandardMaterial({color:[0x72b2ff,0x92f4d3,0xd0e992][i],metalness:.3,roughness:.22}));node.add(sphere);satellites.push(node);
- const curve=new T.CatmullRomCurve3([node.position.clone(),new T.Vector3(node.position.x*.65,-.72,node.position.z*.65),new T.Vector3(0,-.73,0)]);
- group.add(new T.Mesh(new T.TubeGeometry(curve,24,.012,6,false),new T.MeshBasicMaterial({color:0x65b5ba,transparent:true,opacity:.6})));}
+ const positions=[];for(let row=1;row<42;row++){const phi=Math.PI*row/42;for(let col=0;col<84;col++){const theta=Math.PI*2*col/84;positions.push(Math.sin(phi)*Math.cos(theta),Math.cos(phi),Math.sin(phi)*Math.sin(theta));}}
+ const geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(positions,3));group.add(new T.Points(geo,new T.PointsMaterial({color:0x00caff,size:.025,transparent:true,opacity:1})));
+ const cage=new T.IcosahedronGeometry(1.28,0);group.add(new T.LineSegments(new T.EdgesGeometry(cage),new T.LineBasicMaterial({color:0x008fee,transparent:true,opacity:.65})));
+ const verts=cage.attributes.position;const seen=new Set();for(let i=0;i<verts.count;i++){const p=new T.Vector3().fromBufferAttribute(verts,i),k=p.toArray().map(v=>v.toFixed(3)).join(',');if(seen.has(k))continue;seen.add(k);const n=new T.Mesh(new T.SphereGeometry(.027,8,6),new T.MeshBasicMaterial({color:0x00cfff}));n.position.copy(p);group.add(n);}
  let visible=false,frame=0,elapsed=0,last=0;
  function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();renderer.render(scene,camera);}
- function draw(t){frame=0;if(last&&!reducedMotion)elapsed+=Math.min((t-last)/1000,.05);last=t;group.rotation.y=reducedMotion?0:Math.sin(elapsed*.4)*.35;group.position.y=reducedMotion?0:Math.sin(elapsed*.8)*.045;renderer.render(scene,camera);if(visible&&!document.hidden&&!reducedMotion)frame=requestAnimationFrame(draw);}
- function stop(){cancelAnimationFrame(frame);frame=0;last=0;}
- function start(){if(visible&&!document.hidden&&!frame){last=0;frame=requestAnimationFrame(draw);}}
- resize();stage.classList.add('has-service-3d');new ResizeObserver(resize).observe(canvas);
- new IntersectionObserver(([e])=>{visible=e.isIntersecting;visible?start():stop();}).observe(stage);
- document.addEventListener('visibilitychange',()=>document.hidden?stop():start());window.addEventListener('portfolio-motion-change',()=>{stop();draw(performance.now());start();});
- canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();stop();stage.classList.remove('has-service-3d');});
+ function draw(t){frame=0;if(last&&!reducedMotion)elapsed+=Math.min((t-last)/1000,.05);last=t;group.rotation.y=reducedMotion?0:elapsed*.13;group.rotation.z=.12;renderer.render(scene,camera);if(visible&&!document.hidden&&!reducedMotion)frame=requestAnimationFrame(draw);}
+ function stop(){cancelAnimationFrame(frame);frame=0;last=0;}function start(){if(visible&&!document.hidden&&!frame){last=0;frame=requestAnimationFrame(draw);}}
+ resize();stage.classList.add('has-service-3d');new ResizeObserver(resize).observe(canvas);new IntersectionObserver(([e])=>{visible=e.isIntersecting;visible?start():stop();}).observe(stage);
+ document.addEventListener('visibilitychange',()=>document.hidden?stop():start());window.addEventListener('portfolio-motion-change',()=>{stop();draw(performance.now());start();});canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();stop();stage.classList.remove('has-service-3d');});
 })();
 
